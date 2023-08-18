@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF1873CC2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873CB2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift */; };
+		FF1873D32A8CFCE400F60E81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF1873D22A8CFCE400F60E81 /* Preview Assets.xcassets */; };
+		FF1873E02A8CFE6F00F60E81 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873DF2A8CFE6F00F60E81 /* AppState.swift */; };
+		FF1873E62A8CFEB500F60E81 /* GoogleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873E22A8CFEB500F60E81 /* GoogleLoginButtonView.swift */; };
+		FF1873E72A8CFEB500F60E81 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873E32A8CFEB500F60E81 /* LoginView.swift */; };
+		FF1873E82A8CFEB500F60E81 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873E42A8CFEB500F60E81 /* AppleLoginButtonView.swift */; };
+		FF1873E92A8CFEB500F60E81 /* KakaoLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873E52A8CFEB500F60E81 /* KakaoLoginButtonView.swift */; };
+		FF1873EB2A8CFF4100F60E81 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873EA2A8CFF4100F60E81 /* LoginButton.swift */; };
+		FF1873ED2A8CFFA100F60E81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF1873EC2A8CFFA100F60E81 /* Assets.xcassets */; };
+		FF1873EF2A8CFFE600F60E81 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873EE2A8CFFE600F60E81 /* Color.swift */; };
+		FF1873F12A8D027700F60E81 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873F02A8D027700F60E81 /* Font.swift */; };
+		FF1873FE2A8D031D00F60E81 /* SFPRODISPLAYREGULAR.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873F52A8D031D00F60E81 /* SFPRODISPLAYREGULAR.otf */; };
+		FF1873FF2A8D031D00F60E81 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873F62A8D031D00F60E81 /* Roboto-Regular.ttf */; };
+		FF1874002A8D031D00F60E81 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873F72A8D031D00F60E81 /* Pretendard-Light.otf */; };
+		FF1874012A8D031D00F60E81 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873F82A8D031D00F60E81 /* Roboto-Medium.ttf */; };
+		FF1874022A8D031D00F60E81 /* SFPRODISPLAYMEDIUM.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873F92A8D031D00F60E81 /* SFPRODISPLAYMEDIUM.otf */; };
+		FF1874032A8D031D00F60E81 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873FA2A8D031D00F60E81 /* Pretendard-Bold.otf */; };
+		FF1874042A8D031D00F60E81 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873FB2A8D031D00F60E81 /* Pretendard-Regular.otf */; };
+		FF1874052A8D031D00F60E81 /* AppleSDGothicNeoR.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873FC2A8D031D00F60E81 /* AppleSDGothicNeoR.otf */; };
+		FF1874062A8D031D00F60E81 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF1873FD2A8D031D00F60E81 /* Pretendard-SemiBold.otf */; };
+		FF1874082A8D0A7D00F60E81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF1874072A8D0A7D00F60E81 /* GoogleService-Info.plist */; };
+		FF18740B2A8D97F300F60E81 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FF18740A2A8D97F300F60E81 /* GoogleSignIn */; };
+		FF18740D2A8D97F300F60E81 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FF18740C2A8D97F300F60E81 /* GoogleSignInSwift */; };
+		FF1874102A8D985700F60E81 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FF18740F2A8D985700F60E81 /* FirebaseAuth */; };
+		FF1874122A8D985700F60E81 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = FF1874112A8D985700F60E81 /* FirebaseDatabase */; };
+		FF1874142A8D985700F60E81 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FF1874132A8D985700F60E81 /* FirebaseDatabaseSwift */; };
+		FF1874162A8D985700F60E81 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FF1874152A8D985700F60E81 /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FF1873C82A8CFCE300F60E81 /* meokQ-Boss-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meokQ-Boss-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF1873CB2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meokQ_Boss_iosApp.swift; sourceTree = "<group>"; };
+		FF1873D22A8CFCE400F60E81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FF1873DF2A8CFE6F00F60E81 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		FF1873E22A8CFEB500F60E81 /* GoogleLoginButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLoginButtonView.swift; sourceTree = "<group>"; };
+		FF1873E32A8CFEB500F60E81 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FF1873E42A8CFEB500F60E81 /* AppleLoginButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleLoginButtonView.swift; sourceTree = "<group>"; };
+		FF1873E52A8CFEB500F60E81 /* KakaoLoginButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KakaoLoginButtonView.swift; sourceTree = "<group>"; };
+		FF1873EA2A8CFF4100F60E81 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		FF1873EC2A8CFFA100F60E81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF1873EE2A8CFFE600F60E81 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		FF1873F02A8D027700F60E81 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		FF1873F52A8D031D00F60E81 /* SFPRODISPLAYREGULAR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.otf; sourceTree = "<group>"; };
+		FF1873F62A8D031D00F60E81 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		FF1873F72A8D031D00F60E81 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		FF1873F82A8D031D00F60E81 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		FF1873F92A8D031D00F60E81 /* SFPRODISPLAYMEDIUM.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYMEDIUM.otf; sourceTree = "<group>"; };
+		FF1873FA2A8D031D00F60E81 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		FF1873FB2A8D031D00F60E81 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		FF1873FC2A8D031D00F60E81 /* AppleSDGothicNeoR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.otf; sourceTree = "<group>"; };
+		FF1873FD2A8D031D00F60E81 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		FF1874072A8D0A7D00F60E81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FF1874172A8DA1EB00F60E81 /* meokQ-Boss-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "meokQ-Boss-ios.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF1873C52A8CFCE300F60E81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF1874142A8D985700F60E81 /* FirebaseDatabaseSwift in Frameworks */,
+				FF18740B2A8D97F300F60E81 /* GoogleSignIn in Frameworks */,
+				FF1874102A8D985700F60E81 /* FirebaseAuth in Frameworks */,
+				FF1874122A8D985700F60E81 /* FirebaseDatabase in Frameworks */,
+				FF18740D2A8D97F300F60E81 /* GoogleSignInSwift in Frameworks */,
+				FF1874162A8D985700F60E81 /* FirebaseStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF1873BF2A8CFCE300F60E81 = {
+			isa = PBXGroup;
+			children = (
+				FF1873CA2A8CFCE300F60E81 /* meokQ-Boss-ios */,
+				FF1873C92A8CFCE300F60E81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF1873C92A8CFCE300F60E81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF1873C82A8CFCE300F60E81 /* meokQ-Boss-ios.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF1873CA2A8CFCE300F60E81 /* meokQ-Boss-ios */ = {
+			isa = PBXGroup;
+			children = (
+				FF1874172A8DA1EB00F60E81 /* meokQ-Boss-ios.entitlements */,
+				FF1874072A8D0A7D00F60E81 /* GoogleService-Info.plist */,
+				FF1873CB2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift */,
+				FF1873DC2A8CFD3700F60E81 /* View */,
+				FF1873DB2A8CFD3100F60E81 /* Share */,
+				FF1873DA2A8CFD2F00F60E81 /* Sources */,
+				FF1873D92A8CFD2C00F60E81 /* Model */,
+				FF1873D12A8CFCE400F60E81 /* Preview Content */,
+			);
+			path = "meokQ-Boss-ios";
+			sourceTree = "<group>";
+		};
+		FF1873D12A8CFCE400F60E81 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FF1873D22A8CFCE400F60E81 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF1873D92A8CFD2C00F60E81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF1873DF2A8CFE6F00F60E81 /* AppState.swift */,
+				FF1873EA2A8CFF4100F60E81 /* LoginButton.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF1873DA2A8CFD2F00F60E81 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FF1873EC2A8CFFA100F60E81 /* Assets.xcassets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FF1873DB2A8CFD3100F60E81 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				FF1873F42A8D031000F60E81 /* Fonts */,
+				FF1873EE2A8CFFE600F60E81 /* Color.swift */,
+				FF1873F02A8D027700F60E81 /* Font.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		FF1873DC2A8CFD3700F60E81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF1873E12A8CFEA000F60E81 /* Login */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FF1873E12A8CFEA000F60E81 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FF1873E42A8CFEB500F60E81 /* AppleLoginButtonView.swift */,
+				FF1873E22A8CFEB500F60E81 /* GoogleLoginButtonView.swift */,
+				FF1873E52A8CFEB500F60E81 /* KakaoLoginButtonView.swift */,
+				FF1873E32A8CFEB500F60E81 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FF1873F42A8D031000F60E81 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FF1873FC2A8D031D00F60E81 /* AppleSDGothicNeoR.otf */,
+				FF1873FA2A8D031D00F60E81 /* Pretendard-Bold.otf */,
+				FF1873F72A8D031D00F60E81 /* Pretendard-Light.otf */,
+				FF1873FB2A8D031D00F60E81 /* Pretendard-Regular.otf */,
+				FF1873FD2A8D031D00F60E81 /* Pretendard-SemiBold.otf */,
+				FF1873F82A8D031D00F60E81 /* Roboto-Medium.ttf */,
+				FF1873F62A8D031D00F60E81 /* Roboto-Regular.ttf */,
+				FF1873F92A8D031D00F60E81 /* SFPRODISPLAYMEDIUM.otf */,
+				FF1873F52A8D031D00F60E81 /* SFPRODISPLAYREGULAR.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF1873C72A8CFCE300F60E81 /* meokQ-Boss-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF1873D62A8CFCE400F60E81 /* Build configuration list for PBXNativeTarget "meokQ-Boss-ios" */;
+			buildPhases = (
+				FF1873C42A8CFCE300F60E81 /* Sources */,
+				FF1873C52A8CFCE300F60E81 /* Frameworks */,
+				FF1873C62A8CFCE300F60E81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "meokQ-Boss-ios";
+			packageProductDependencies = (
+				FF18740A2A8D97F300F60E81 /* GoogleSignIn */,
+				FF18740C2A8D97F300F60E81 /* GoogleSignInSwift */,
+				FF18740F2A8D985700F60E81 /* FirebaseAuth */,
+				FF1874112A8D985700F60E81 /* FirebaseDatabase */,
+				FF1874132A8D985700F60E81 /* FirebaseDatabaseSwift */,
+				FF1874152A8D985700F60E81 /* FirebaseStorage */,
+			);
+			productName = "meokQ-Boss-ios";
+			productReference = FF1873C82A8CFCE300F60E81 /* meokQ-Boss-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF1873C02A8CFCE300F60E81 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					FF1873C72A8CFCE300F60E81 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = FF1873C32A8CFCE300F60E81 /* Build configuration list for PBXProject "meokQ-Boss-ios" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF1873BF2A8CFCE300F60E81;
+			packageReferences = (
+				FF1874092A8D97F300F60E81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				FF18740E2A8D985700F60E81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = FF1873C92A8CFCE300F60E81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF1873C72A8CFCE300F60E81 /* meokQ-Boss-ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF1873C62A8CFCE300F60E81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF1873FE2A8D031D00F60E81 /* SFPRODISPLAYREGULAR.otf in Resources */,
+				FF1874052A8D031D00F60E81 /* AppleSDGothicNeoR.otf in Resources */,
+				FF1874062A8D031D00F60E81 /* Pretendard-SemiBold.otf in Resources */,
+				FF1873FF2A8D031D00F60E81 /* Roboto-Regular.ttf in Resources */,
+				FF1874012A8D031D00F60E81 /* Roboto-Medium.ttf in Resources */,
+				FF1874082A8D0A7D00F60E81 /* GoogleService-Info.plist in Resources */,
+				FF1873ED2A8CFFA100F60E81 /* Assets.xcassets in Resources */,
+				FF1873D32A8CFCE400F60E81 /* Preview Assets.xcassets in Resources */,
+				FF1874022A8D031D00F60E81 /* SFPRODISPLAYMEDIUM.otf in Resources */,
+				FF1874042A8D031D00F60E81 /* Pretendard-Regular.otf in Resources */,
+				FF1874032A8D031D00F60E81 /* Pretendard-Bold.otf in Resources */,
+				FF1874002A8D031D00F60E81 /* Pretendard-Light.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF1873C42A8CFCE300F60E81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF1873E92A8CFEB500F60E81 /* KakaoLoginButtonView.swift in Sources */,
+				FF1873E02A8CFE6F00F60E81 /* AppState.swift in Sources */,
+				FF1873EB2A8CFF4100F60E81 /* LoginButton.swift in Sources */,
+				FF1873CC2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift in Sources */,
+				FF1873E72A8CFEB500F60E81 /* LoginView.swift in Sources */,
+				FF1873F12A8D027700F60E81 /* Font.swift in Sources */,
+				FF1873EF2A8CFFE600F60E81 /* Color.swift in Sources */,
+				FF1873E82A8CFEB500F60E81 /* AppleLoginButtonView.swift in Sources */,
+				FF1873E62A8CFEB500F60E81 /* GoogleLoginButtonView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FF1873D42A8CFCE400F60E81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FF1873D52A8CFCE400F60E81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF1873D72A8CFCE400F60E81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "meokQ-Boss-ios/meokQ-Boss-ios.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"meokQ-Boss-ios/Preview Content\"";
+				DEVELOPMENT_TEAM = KRY967CND6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Teamfair.meokQ-Boss-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FF1873D82A8CFCE400F60E81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "meokQ-Boss-ios/meokQ-Boss-ios.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"meokQ-Boss-ios/Preview Content\"";
+				DEVELOPMENT_TEAM = KRY967CND6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Teamfair.meokQ-Boss-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF1873C32A8CFCE300F60E81 /* Build configuration list for PBXProject "meokQ-Boss-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF1873D42A8CFCE400F60E81 /* Debug */,
+				FF1873D52A8CFCE400F60E81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF1873D62A8CFCE400F60E81 /* Build configuration list for PBXNativeTarget "meokQ-Boss-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF1873D72A8CFCE400F60E81 /* Debug */,
+				FF1873D82A8CFCE400F60E81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FF1874092A8D97F300F60E81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		FF18740E2A8D985700F60E81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FF18740A2A8D97F300F60E81 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF1874092A8D97F300F60E81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		FF18740C2A8D97F300F60E81 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF1874092A8D97F300F60E81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		FF18740F2A8D985700F60E81 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF18740E2A8D985700F60E81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		FF1874112A8D985700F60E81 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF18740E2A8D985700F60E81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		FF1874132A8D985700F60E81 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF18740E2A8D985700F60E81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		FF1874152A8D985700F60E81 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF18740E2A8D985700F60E81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FF1873C02A8CFCE300F60E81 /* Project object */;
+}
