@@ -32,6 +32,30 @@ struct meokQ_Boss_iosApp: App {
                 LoginView()
                     .environmentObject(appState)
             }
+//            NavigationView{
+//                TabView {
+//                    QuestView()
+//                        .tabItem {
+//                            Image(systemName: "star.fill")
+//                            Text("퀘스트")
+//                        }
+//                    ReceiptView()
+//
+//                        .tabItem{
+//                            Image(systemName: "wallet.pass.fill")
+//                            Text("영수증")
+//                        }
+//
+//                    StatisticsView()
+//
+//                        .tabItem {
+//                            Image(systemName: "chart.bar.fill")
+//                            Text("통계")
+//                        }
+//                }
+//            }
+            
+            
         }
     }
 }
