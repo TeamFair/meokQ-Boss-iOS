@@ -48,6 +48,10 @@
 		FF1874122A8D985700F60E81 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = FF1874112A8D985700F60E81 /* FirebaseDatabase */; };
 		FF1874142A8D985700F60E81 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FF1874132A8D985700F60E81 /* FirebaseDatabaseSwift */; };
 		FF1874162A8D985700F60E81 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FF1874152A8D985700F60E81 /* FirebaseStorage */; };
+		FFFC6FC82A9083E6007C57AC /* MarketStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6FC72A9083E6007C57AC /* MarketStore.swift */; };
+		FFFC6FCA2A908472007C57AC /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6FC92A908472007C57AC /* Market.swift */; };
+		FFFC6FCC2A908A4D007C57AC /* RequestStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6FCB2A908A4D007C57AC /* RequestStore.swift */; };
+		FFFC6FCE2A90998A007C57AC /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6FCD2A90998A007C57AC /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +92,10 @@
 		FF1873FD2A8D031D00F60E81 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		FF1874072A8D0A7D00F60E81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF1874172A8DA1EB00F60E81 /* meokQ-Boss-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "meokQ-Boss-ios.entitlements"; sourceTree = "<group>"; };
+		FFFC6FC72A9083E6007C57AC /* MarketStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketStore.swift; sourceTree = "<group>"; };
+		FFFC6FC92A908472007C57AC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		FFFC6FCB2A908A4D007C57AC /* RequestStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStore.swift; sourceTree = "<group>"; };
+		FFFC6FCD2A90998A007C57AC /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,8 +213,11 @@
 		FF1873D92A8CFD2C00F60E81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC6FC62A908352007C57AC /* Store */,
 				FF1873DF2A8CFE6F00F60E81 /* AppState.swift */,
 				FF1873EA2A8CFF4100F60E81 /* LoginButton.swift */,
+				FFFC6FCD2A90998A007C57AC /* Request.swift */,
+				FFFC6FC92A908472007C57AC /* Market.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +279,15 @@
 				FF1873F52A8D031D00F60E81 /* SFPRODISPLAYREGULAR.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FFFC6FC62A908352007C57AC /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				FFFC6FC72A9083E6007C57AC /* MarketStore.swift */,
+				FFFC6FCB2A908A4D007C57AC /* RequestStore.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +385,9 @@
 				E50FBFBE2A9101C300ACF024 /* QuestTopTabbar.swift in Sources */,
 				E50FBFB22A9101C300ACF024 /* StatisticsView.swift in Sources */,
 				FF1873E92A8CFEB500F60E81 /* KakaoLoginButtonView.swift in Sources */,
+				FFFC6FCE2A90998A007C57AC /* Request.swift in Sources */,
+				FFFC6FCA2A908472007C57AC /* Market.swift in Sources */,
+				FFFC6FC82A9083E6007C57AC /* MarketStore.swift in Sources */,
 				FF1873E02A8CFE6F00F60E81 /* AppState.swift in Sources */,
 				E50FBFB82A9101C300ACF024 /* QuestComponent.swift in Sources */,
 				E50FBF8C2A9101A200ACF024 /* QuestView.swift in Sources */,
@@ -385,6 +408,7 @@
 				E50FBFBC2A9101C300ACF024 /* ReceiptView.swift in Sources */,
 				FF1873E82A8CFEB500F60E81 /* AppleLoginButtonView.swift in Sources */,
 				FF1873E62A8CFEB500F60E81 /* GoogleLoginButtonView.swift in Sources */,
+				FFFC6FCC2A908A4D007C57AC /* RequestStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
