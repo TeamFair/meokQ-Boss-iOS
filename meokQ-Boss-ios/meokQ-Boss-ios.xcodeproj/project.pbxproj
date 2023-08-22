@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E50FBF8B2A9101A200ACF024 /* QuestAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF892A9101A200ACF024 /* QuestAddView.swift */; };
+		E50FBF8C2A9101A200ACF024 /* QuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF8A2A9101A200ACF024 /* QuestView.swift */; };
+		E50FBFAE2A9101C300ACF024 /* StatisticsUsedFinishedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF922A9101C300ACF024 /* StatisticsUsedFinishedTabView.swift */; };
+		E50FBFAF2A9101C300ACF024 /* QuestPostTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF932A9101C300ACF024 /* QuestPostTabView.swift */; };
+		E50FBFB02A9101C300ACF024 /* StatisticsSubmitFinishedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF942A9101C300ACF024 /* StatisticsSubmitFinishedTabView.swift */; };
+		E50FBFB12A9101C300ACF024 /* QuestCheckTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF952A9101C300ACF024 /* QuestCheckTabView.swift */; };
+		E50FBFB22A9101C300ACF024 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF972A9101C300ACF024 /* StatisticsView.swift */; };
+		E50FBFB82A9101C300ACF024 /* QuestComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF9E2A9101C300ACF024 /* QuestComponent.swift */; };
+		E50FBFB92A9101C300ACF024 /* StatisticsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBF9F2A9101C300ACF024 /* StatisticsComponent.swift */; };
+		E50FBFBA2A9101C300ACF024 /* ReceiptComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBFA02A9101C300ACF024 /* ReceiptComponent.swift */; };
+		E50FBFBB2A9101C300ACF024 /* ReceiptCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBFA22A9101C300ACF024 /* ReceiptCheckView.swift */; };
+		E50FBFBC2A9101C300ACF024 /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBFA32A9101C300ACF024 /* ReceiptView.swift */; };
+		E50FBFBE2A9101C300ACF024 /* QuestTopTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBFA62A9101C300ACF024 /* QuestTopTabbar.swift */; };
+		E50FBFBF2A9101C300ACF024 /* StatisticsTopTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FBFA72A9101C300ACF024 /* StatisticsTopTabbar.swift */; };
 		FF1873CC2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873CB2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift */; };
 		FF1873D32A8CFCE400F60E81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF1873D22A8CFCE400F60E81 /* Preview Assets.xcassets */; };
 		FF1873E02A8CFE6F00F60E81 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1873DF2A8CFE6F00F60E81 /* AppState.swift */; };
@@ -37,6 +51,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E50FBF892A9101A200ACF024 /* QuestAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestAddView.swift; sourceTree = "<group>"; };
+		E50FBF8A2A9101A200ACF024 /* QuestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestView.swift; sourceTree = "<group>"; };
+		E50FBF922A9101C300ACF024 /* StatisticsUsedFinishedTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsUsedFinishedTabView.swift; sourceTree = "<group>"; };
+		E50FBF932A9101C300ACF024 /* QuestPostTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestPostTabView.swift; sourceTree = "<group>"; };
+		E50FBF942A9101C300ACF024 /* StatisticsSubmitFinishedTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsSubmitFinishedTabView.swift; sourceTree = "<group>"; };
+		E50FBF952A9101C300ACF024 /* QuestCheckTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestCheckTabView.swift; sourceTree = "<group>"; };
+		E50FBF972A9101C300ACF024 /* StatisticsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		E50FBF9E2A9101C300ACF024 /* QuestComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestComponent.swift; sourceTree = "<group>"; };
+		E50FBF9F2A9101C300ACF024 /* StatisticsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsComponent.swift; sourceTree = "<group>"; };
+		E50FBFA02A9101C300ACF024 /* ReceiptComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptComponent.swift; sourceTree = "<group>"; };
+		E50FBFA22A9101C300ACF024 /* ReceiptCheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptCheckView.swift; sourceTree = "<group>"; };
+		E50FBFA32A9101C300ACF024 /* ReceiptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
+		E50FBFA62A9101C300ACF024 /* QuestTopTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestTopTabbar.swift; sourceTree = "<group>"; };
+		E50FBFA72A9101C300ACF024 /* StatisticsTopTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTopTabbar.swift; sourceTree = "<group>"; };
 		FF1873C82A8CFCE300F60E81 /* meokQ-Boss-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meokQ-Boss-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF1873CB2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meokQ_Boss_iosApp.swift; sourceTree = "<group>"; };
 		FF1873D22A8CFCE400F60E81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -79,6 +107,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E50FBF882A91017300ACF024 /* Quest */ = {
+			isa = PBXGroup;
+			children = (
+				E50FBF8A2A9101A200ACF024 /* QuestView.swift */,
+				E50FBF892A9101A200ACF024 /* QuestAddView.swift */,
+			);
+			path = Quest;
+			sourceTree = "<group>";
+		};
+		E50FBF912A9101C300ACF024 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				E50FBF922A9101C300ACF024 /* StatisticsUsedFinishedTabView.swift */,
+				E50FBF932A9101C300ACF024 /* QuestPostTabView.swift */,
+				E50FBF942A9101C300ACF024 /* StatisticsSubmitFinishedTabView.swift */,
+				E50FBF952A9101C300ACF024 /* QuestCheckTabView.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		E50FBF962A9101C300ACF024 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				E50FBF972A9101C300ACF024 /* StatisticsView.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		E50FBF9D2A9101C300ACF024 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				E50FBF9E2A9101C300ACF024 /* QuestComponent.swift */,
+				E50FBF9F2A9101C300ACF024 /* StatisticsComponent.swift */,
+				E50FBFA02A9101C300ACF024 /* ReceiptComponent.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		E50FBFA12A9101C300ACF024 /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				E50FBFA22A9101C300ACF024 /* ReceiptCheckView.swift */,
+				E50FBFA32A9101C300ACF024 /* ReceiptView.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
+		E50FBFA52A9101C300ACF024 /* TopTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				E50FBFA62A9101C300ACF024 /* QuestTopTabbar.swift */,
+				E50FBFA72A9101C300ACF024 /* StatisticsTopTabbar.swift */,
+			);
+			path = TopTabbar;
+			sourceTree = "<group>";
+		};
 		FF1873BF2A8CFCE300F60E81 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +233,12 @@
 			isa = PBXGroup;
 			children = (
 				FF1873E12A8CFEA000F60E81 /* Login */,
+				E50FBF882A91017300ACF024 /* Quest */,
+				E50FBFA12A9101C300ACF024 /* Receipt */,
+				E50FBF962A9101C300ACF024 /* Statistics */,
+				E50FBF9D2A9101C300ACF024 /* Component */,
+				E50FBF912A9101C300ACF024 /* TabView */,
+				E50FBFA52A9101C300ACF024 /* TopTabbar */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,13 +362,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50FBFBE2A9101C300ACF024 /* QuestTopTabbar.swift in Sources */,
+				E50FBFB22A9101C300ACF024 /* StatisticsView.swift in Sources */,
 				FF1873E92A8CFEB500F60E81 /* KakaoLoginButtonView.swift in Sources */,
 				FF1873E02A8CFE6F00F60E81 /* AppState.swift in Sources */,
+				E50FBFB82A9101C300ACF024 /* QuestComponent.swift in Sources */,
+				E50FBF8C2A9101A200ACF024 /* QuestView.swift in Sources */,
 				FF1873EB2A8CFF4100F60E81 /* LoginButton.swift in Sources */,
+				E50FBFB92A9101C300ACF024 /* StatisticsComponent.swift in Sources */,
+				E50FBFAE2A9101C300ACF024 /* StatisticsUsedFinishedTabView.swift in Sources */,
+				E50FBFBF2A9101C300ACF024 /* StatisticsTopTabbar.swift in Sources */,
 				FF1873CC2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift in Sources */,
+				E50FBFB12A9101C300ACF024 /* QuestCheckTabView.swift in Sources */,
+				E50FBFBA2A9101C300ACF024 /* ReceiptComponent.swift in Sources */,
 				FF1873E72A8CFEB500F60E81 /* LoginView.swift in Sources */,
 				FF1873F12A8D027700F60E81 /* Font.swift in Sources */,
 				FF1873EF2A8CFFE600F60E81 /* Color.swift in Sources */,
+				E50FBF8B2A9101A200ACF024 /* QuestAddView.swift in Sources */,
+				E50FBFAF2A9101C300ACF024 /* QuestPostTabView.swift in Sources */,
+				E50FBFB02A9101C300ACF024 /* StatisticsSubmitFinishedTabView.swift in Sources */,
+				E50FBFBB2A9101C300ACF024 /* ReceiptCheckView.swift in Sources */,
+				E50FBFBC2A9101C300ACF024 /* ReceiptView.swift in Sources */,
 				FF1873E82A8CFEB500F60E81 /* AppleLoginButtonView.swift in Sources */,
 				FF1873E62A8CFEB500F60E81 /* GoogleLoginButtonView.swift in Sources */,
 			);
@@ -418,7 +522,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +556,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
