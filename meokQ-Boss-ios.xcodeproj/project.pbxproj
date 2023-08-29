@@ -52,6 +52,12 @@
 		FFFC6FCA2A908472007C57AC /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6FC92A908472007C57AC /* Market.swift */; };
 		FFFC6FCC2A908A4D007C57AC /* RequestStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6FCB2A908A4D007C57AC /* RequestStore.swift */; };
 		FFFC6FCE2A90998A007C57AC /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6FCD2A90998A007C57AC /* Request.swift */; };
+		FFFC6FED2A9580CD007C57AC /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6FEC2A9580CD007C57AC /* TabbarView.swift */; };
+		FFFC6FF02A95831C007C57AC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FFFC6FEF2A95831C007C57AC /* Kingfisher */; };
+		FFFC6FF42A9585EA007C57AC /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FFFC6FF32A9585EA007C57AC /* KakaoSDK */; };
+		FFFC6FF62A9585EA007C57AC /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FFFC6FF52A9585EA007C57AC /* KakaoSDKAuth */; };
+		FFFC6FF82A9585EB007C57AC /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = FFFC6FF72A9585EB007C57AC /* KakaoSDKCommon */; };
+		FFFC6FFA2A9585EB007C57AC /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = FFFC6FF92A9585EB007C57AC /* KakaoSDKUser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +102,8 @@
 		FFFC6FC92A908472007C57AC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		FFFC6FCB2A908A4D007C57AC /* RequestStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStore.swift; sourceTree = "<group>"; };
 		FFFC6FCD2A90998A007C57AC /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		FFFC6FEC2A9580CD007C57AC /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		FFFC6FFB2A96D472007C57AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +112,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1874142A8D985700F60E81 /* FirebaseDatabaseSwift in Frameworks */,
+				FFFC6FFA2A9585EB007C57AC /* KakaoSDKUser in Frameworks */,
+				FFFC6FF42A9585EA007C57AC /* KakaoSDK in Frameworks */,
 				FF18740B2A8D97F300F60E81 /* GoogleSignIn in Frameworks */,
+				FFFC6FF02A95831C007C57AC /* Kingfisher in Frameworks */,
 				FF1874102A8D985700F60E81 /* FirebaseAuth in Frameworks */,
 				FF1874122A8D985700F60E81 /* FirebaseDatabase in Frameworks */,
 				FF18740D2A8D97F300F60E81 /* GoogleSignInSwift in Frameworks */,
 				FF1874162A8D985700F60E81 /* FirebaseStorage in Frameworks */,
+				FFFC6FF82A9585EB007C57AC /* KakaoSDKCommon in Frameworks */,
+				FFFC6FF62A9585EA007C57AC /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +144,7 @@
 				E50FBF932A9101C300ACF024 /* QuestPostTabView.swift */,
 				E50FBF942A9101C300ACF024 /* StatisticsSubmitFinishedTabView.swift */,
 				E50FBF952A9101C300ACF024 /* QuestCheckTabView.swift */,
+				FFFC6FEC2A9580CD007C57AC /* TabbarView.swift */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -190,6 +204,7 @@
 		FF1873CA2A8CFCE300F60E81 /* meokQ-Boss-ios */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC6FFB2A96D472007C57AC /* Info.plist */,
 				FF1874172A8DA1EB00F60E81 /* meokQ-Boss-ios.entitlements */,
 				FF1874072A8D0A7D00F60E81 /* GoogleService-Info.plist */,
 				FF1873CB2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift */,
@@ -313,6 +328,11 @@
 				FF1874112A8D985700F60E81 /* FirebaseDatabase */,
 				FF1874132A8D985700F60E81 /* FirebaseDatabaseSwift */,
 				FF1874152A8D985700F60E81 /* FirebaseStorage */,
+				FFFC6FEF2A95831C007C57AC /* Kingfisher */,
+				FFFC6FF32A9585EA007C57AC /* KakaoSDK */,
+				FFFC6FF52A9585EA007C57AC /* KakaoSDKAuth */,
+				FFFC6FF72A9585EB007C57AC /* KakaoSDKCommon */,
+				FFFC6FF92A9585EB007C57AC /* KakaoSDKUser */,
 			);
 			productName = "meokQ-Boss-ios";
 			productReference = FF1873C82A8CFCE300F60E81 /* meokQ-Boss-ios.app */;
@@ -345,6 +365,8 @@
 			packageReferences = (
 				FF1874092A8D97F300F60E81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				FF18740E2A8D985700F60E81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FFFC6FEE2A95831C007C57AC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				FFFC6FF22A9585EA007C57AC /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = FF1873C92A8CFCE300F60E81 /* Products */;
 			projectDirPath = "";
@@ -392,6 +414,7 @@
 				E50FBFB82A9101C300ACF024 /* QuestComponent.swift in Sources */,
 				E50FBF8C2A9101A200ACF024 /* QuestView.swift in Sources */,
 				FF1873EB2A8CFF4100F60E81 /* LoginButton.swift in Sources */,
+				FFFC6FED2A9580CD007C57AC /* TabbarView.swift in Sources */,
 				E50FBFB92A9101C300ACF024 /* StatisticsComponent.swift in Sources */,
 				E50FBFAE2A9101C300ACF024 /* StatisticsUsedFinishedTabView.swift in Sources */,
 				E50FBFBF2A9101C300ACF024 /* StatisticsTopTabbar.swift in Sources */,
@@ -541,12 +564,13 @@
 				DEVELOPMENT_TEAM = KRY967CND6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "meokQ-Boss-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -575,12 +599,13 @@
 				DEVELOPMENT_TEAM = KRY967CND6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "meokQ-Boss-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -637,6 +662,22 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		FFFC6FEE2A95831C007C57AC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		FFFC6FF22A9585EA007C57AC /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -669,6 +710,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FF18740E2A8D985700F60E81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		FFFC6FEF2A95831C007C57AC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFFC6FEE2A95831C007C57AC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		FFFC6FF32A9585EA007C57AC /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFFC6FF22A9585EA007C57AC /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		FFFC6FF52A9585EA007C57AC /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFFC6FF22A9585EA007C57AC /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		FFFC6FF72A9585EB007C57AC /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFFC6FF22A9585EA007C57AC /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		FFFC6FF92A9585EB007C57AC /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFFC6FF22A9585EA007C57AC /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

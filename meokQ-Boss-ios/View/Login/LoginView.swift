@@ -42,7 +42,7 @@ struct LoginView: View {
                 }
                 .padding(.bottom, 100)
                 
-                NavigationLink(destination: Text("로그인 완료")
+                NavigationLink(destination: TabbarView()
                     .environmentObject(appState), isActive: $appState.isLogin) {
                         EmptyView()
                     }

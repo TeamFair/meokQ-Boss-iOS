@@ -6,47 +6,32 @@
 //
 
 import Foundation
-import FirebaseDatabase
-import FirebaseDatabaseSwift
-
+import FirebaseFirestore
+import OSLog
 
 class MarketStore: ObservableObject {
     @Published var currentMarket: Market?
     @Published var changeCount: Int = 0
     
-    let ref: DatabaseReference? = Database.database().reference()
-    var marketDatabasePath: DatabaseReference? {
-        ref?.child("market")
-    }
+    let db = Firestore.firestore()
     
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
-    
-    func stopListening() {
-        ref?.removeAllObservers()
-    }
 }
 
 extension MarketStore {
     @MainActor
     func fetchMarketDetail(district: String, marketId: String) async {
-        guard let databasePath = self.marketDatabasePath?.child(district).child(marketId) else {
-            return
-        }
-        
-        databasePath.observe(.value) { [weak self] snapshot, _  in
-            guard let self = self else {
-                return
+        do {
+            let querySnapshot = try await db.collection("markets/\(marketId)").whereField("district", isEqualTo: district).getDocuments()
+            for document in querySnapshot.documents {
+                let marketData = try JSONSerialization.data(withJSONObject: document.data())
+                let market = try try self.decoder.decode(Market.self, from: marketData)
+                self.currentMarket = market
             }
-            if let json = snapshot.value as? [String: Any] {
-                do {
-                    let marketData = try JSONSerialization.data(withJSONObject: json)
-                    let market = try self.decoder.decode(Market.self, from: marketData)
-                    self.currentMarket = market
-                } catch {
-                    print("an error occurred", error)
-                }
-            }
+            Log("\(self.currentMarket)")
+        } catch {
+            Log("\(error)")
         }
     }
   

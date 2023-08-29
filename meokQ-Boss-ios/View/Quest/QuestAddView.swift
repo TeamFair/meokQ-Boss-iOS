@@ -41,7 +41,7 @@ struct QuestAddView: View {
                     Spacer()
                 }
                 
-                TextField("퀘스트를 입력하세요", text: $questTextValue, axis: .vertical)
+                TextField("퀘스트를 입력하세요", text: $questTextValue)
                     .font(Font.custom("Pretendard", size: 14)
                         .weight(.medium))
                     .frame(minHeight: 80)
@@ -61,7 +61,7 @@ struct QuestAddView: View {
                     Spacer()
                 }
                 
-                TextField("보상을 입력하세요", text: $prizeTextValue, axis: .vertical)
+                TextField("보상을 입력하세요", text: $prizeTextValue)
                     .font(Font.custom("Pretendard", size: 14)
                         .weight(.medium))
                     .frame(minHeight: 80)

@@ -162,7 +162,7 @@ struct SheetView: View {
             .foregroundColor(.black)
             
             
-            TextField(initialText, text: $text, axis: .vertical)
+            TextField(initialText, text: $text)
                 .font(Font.custom("Pretendard", size: 14)
                     .weight(.bold))
                 .frame(minHeight: 80)
