@@ -11,7 +11,7 @@ struct LoginView: View {
     @EnvironmentObject var appState: AppState
     
     @StateObject var marketStore = MarketStore()
-    @StateObject var requestStore = RequestStore()
+//    @StateObject var requestStore = RequestStore()
     var buttonAction: () -> Void {
         {
             appState.isLogin = true
@@ -50,11 +50,11 @@ struct LoginView: View {
         }
         .accentColor(.black)
         .id(appState.roginViewId)
-        .task {
-            await marketStore.fetchMarketDetail(district: "1114000000", marketId: "marketIdSample1")
-            marketStore.addQuest(district: "1114000000", marketId: "marketIdSample5", content: "이건 테스트 퀘스트", reward: "이건 테스트 보상")
-            await requestStore.fetchRequests(marketId: "marketIdSample1")
-        }
+//        .task {
+//            await marketStore.fetchMarketDetail(district: "1114000000", marketId: "marketIdSample1")
+//            marketStore.addQuest(district: "1114000000", marketId: "marketIdSample5", content: "이건 테스트 퀘스트", reward: "이건 테스트 보상")
+//            await requestStore.fetchRequests(marketId: "marketIdSample1")
+//        }
     }
 }
 

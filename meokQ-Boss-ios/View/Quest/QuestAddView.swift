@@ -16,17 +16,16 @@ struct QuestAddView: View {
     
     @State private var questTextValue: String = ""
     @State private var prizeTextValue: String = ""
-    @State private var questRemaining: Int = 0
     @State private var alertMessage: Bool = false
-    
+    @StateObject private var marketStore = MarketStore()
+    @EnvironmentObject var appState: AppState
     var body: some View {
         
         ZStack{
             VStack{
-        //퀘스트란
                 HStack{
                     Spacer()
-                    Text("남은 퀘스트 개수 : \(questRemaining)개")
+                    Text("남은 퀘스트 개수 : \(marketStore.market.missionCount)개")
                         .font(Font.custom("Pretendard", size: 15)
                             .weight(.regular))
                         .padding(.trailing, 16)
@@ -87,14 +86,17 @@ struct QuestAddView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.Yellow)
                     .alert(isPresented: $alertMessage) {
-                                       Alert(title: Text("퀘스트를 추가하시겠습니까?"), message: Text("추가 후 수정이 제한되니 유의 부탁드립니다"),
-                                             primaryButton:  .default(Text("확인") ,action: {
-                                           print("confirm Button")
-                                       }),
-                                             secondaryButton:.cancel(Text("취소")))
-                                   }
-                    
-                    
+                        Alert(title: Text("퀘스트를 추가하시겠습니까?"), message: Text("추가 후 수정이 제한되니 유의 부탁드립니다"),
+                              primaryButton:  .default(Text("확인") ,action: {
+                            if let marketId = appState.uid {
+                                Task {
+                                    await marketStore.addMission(marketId: marketId, missionDescription: questTextValue, reward: prizeTextValue, missionCount: marketStore.market.missionCount)
+                                    await marketStore.fetchMarket(marketId: marketId)
+                                }
+                            }
+                        }),
+                              secondaryButton:.cancel(Text("취소")))
+                    }
                 }
                 .cornerRadius(20)
                 .padding(.bottom, 20)
@@ -123,13 +125,17 @@ struct QuestAddView: View {
             }
         }
         .background(Color.LightYellow)
-
-        
+        .task {
+            if let marketId = appState.uid {
+                await marketStore.fetchMarket(marketId: marketId)
+            }
+        }
     }
 }
 
 struct QuestAddView_Previews: PreviewProvider {
     static var previews: some View {
         QuestAddView()
+            .environmentObject(AppState(uid: "marketIdSample1"))
     }
 }

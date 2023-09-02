@@ -47,3 +47,11 @@ struct QuestTitleTextView: View {
             .padding()
     }
 }
+
+struct QuestTitleTextView_Previews: PreviewProvider {
+    @Namespace static var namespace
+    
+    static var previews: some View {
+        QuestTitleTextView(section: QuestTitleSection.posting, namespace: namespace, selectedSection: .constant(QuestTitleSection.posting))
+    }
+}

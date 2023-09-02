@@ -6,47 +6,115 @@
 //
 
 import Foundation
-import FirebaseFirestore
-import OSLog
+import Firebase
 
-class MarketStore: ObservableObject {
-    @Published var currentMarket: Market?
+class MarketStore: FirestoreManager {
+    @Published var market: Market = Market()
     @Published var changeCount: Int = 0
     
-    let db = Firestore.firestore()
+    @Published var mission: Mission = Mission()
+    @Published var missions: [Mission] = []
     
-    private let encoder = JSONEncoder()
-    private let decoder = JSONDecoder()
+    @Published var requests: [Request] = []
 }
 
 extension MarketStore {
     @MainActor
-    func fetchMarketDetail(district: String, marketId: String) async {
+    func fetchMarket(marketId: String) async {
         do {
-            let querySnapshot = try await db.collection("markets/\(marketId)").whereField("district", isEqualTo: district).getDocuments()
-            for document in querySnapshot.documents {
-                let marketData = try JSONSerialization.data(withJSONObject: document.data())
-                let market = try try self.decoder.decode(Market.self, from: marketData)
-                self.currentMarket = market
+            guard let documentData = try await db.collection("markets").document(marketId).getDocument().data() else {
+                Log("guard else")
+                return
             }
-            Log("\(self.currentMarket)")
+            let data = encodeDataToMarket(documentData: documentData)
+            self.market = data
         } catch {
             Log("\(error)")
         }
     }
   
-    func addQuest(district: String, marketId: String, content: String, reward: String) {
+    @MainActor
+    func addMission(marketId: String, missionDescription: String, reward: String, missionCount: Int) async {
         let missionId = UUID().uuidString
-        let nowDate = Date() // 현재의 Date (ex: 2020-08-13 09:14:48 +0000)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" // 2020-08-13 16:30
-        let dateStr = dateFormatter.string(from: nowDate) // 현재 시간의 Date를 format에 맞춰 string으로 반환
-        self.marketDatabasePath?.child(district).child(marketId).child("missions").child(missionId).setValue([
-            "content": content,
+
+        let missionData: [String: Any] = [
+            "createdTimestamp" : Timestamp.init(date: Date.now),
+            "missionId": marketId,
+            "missionDescription": missionDescription,
+            "modifiedTimestamp": Timestamp.init(date: Date.now),
+            "paidStatus": true,
             "reward": reward,
-            "date": dateStr
-        ] as [String : Any])
+            "status": "approved"
+        ]
+        
+        let missionCount: [String: Any] = [
+            "missionCount": missionCount - 1
+        ]
+        
+        let MissionDocRef =  db
+            .collection("markets").document(marketId)
+            .collection("missions_market").document(missionId)
+        
+        let MarketDocRef = db
+            .collection("markets").document(marketId)
+        
+        let batch = db.batch()
+        
+        batch.setData(missionData, forDocument: MissionDocRef)
+        batch.updateData(missionCount, forDocument: MarketDocRef)
+        
+        do {
+            try await batch.commit()
+            Log("Batch write succeeded")
+        } catch {
+            Log(error)
+        }
     }
+    
+    @MainActor
+    func fetchAllMarketMissions(marketId: String) async {
+        
+        do {
+            self.missions = []
+            let querySnapshot = try await db.collection("markets")
+                .document(marketId)
+                .collection("missions_market")
+                .whereField("paidStatus", isEqualTo: true)
+                .getDocuments()
+            
+            for document in querySnapshot.documents {
+                let documentData = document.data()
+                let data = encodeDataToMission(documentData: documentData)
+                self.missions.append(data)
+                Log(self.missions)
+            }
+        } catch {
+            Log(error)
+        }
+    }
+    
+    @MainActor
+    func fetchAllMarketCompletionMissions(marketId: String) async {
+        
+        do {
+            self.missions = []
+            let querySnapshot = try await db.collection("markets")
+                .document(marketId)
+                .collection("completion_requests_mission")
+                .whereField("status", isEqualTo: "pending")
+                .getDocuments()
+            
+            for document in querySnapshot.documents {
+                let documentData = document.data()
+                let data = encodeDataToRequest(documentData: documentData)
+                self.requests.append(data)
+                Log(self.missions)
+            }
+        } catch {
+            Log(error)
+        }
+    }
+    
     
 //    func fetchMissionStatus(district: String, marketId: String) {
 //        guard let databasePath = self.missionStatusDatabasePath?.child(marketId) else {

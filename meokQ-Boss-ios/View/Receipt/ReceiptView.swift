@@ -7,33 +7,12 @@
 
 import SwiftUI
 
-// 영수증 Tab입니다. 
-
-struct Receipt: Identifiable {
-    var id = UUID()
-    var userName: String
-    var imageString: String 
-    var quest: Quest
-}
-
-struct Quest {
-    var quest: String
-    var coupon: String
-}
-
-var questList: [Quest] = [
-    Quest(quest: "오후 2시전 아메리카노 2잔 주문", coupon: "아메리카노 50% 할인권"),
-    Quest(quest: "아메리카노 00잔 주문", coupon: "아메리카노 1% 할인권")
-]
-var receiptList: [Receipt] = [
-    Receipt(userName: "chad", imageString: "circle", quest: questList[0]),
-    Receipt(userName: "jjjjjjad", imageString: "star", quest: questList[0]),
-    Receipt(userName: "zzzzzzzzzzad", imageString: "person", quest: questList[1])
-]
+// 영수증 Tab입니다.
 
 struct ReceiptView: View {
-    @State var receiptSelection: Receipt?
-
+    @StateObject var marketStore = MarketStore()
+    @EnvironmentObject var appState: AppState
+    
     var body: some View {
             VStack (spacing:0){
                 ScrollView {
@@ -48,9 +27,9 @@ struct ReceiptView: View {
                     .padding(.top, 23)
                     
                     LazyVGrid(columns: [GridItem(.flexible())],spacing: 16) {
-                        ForEach(receiptList) { receipt in
-                            NavigationLink(destination: ReceiptCheckView(receipt: receipt )) {
-                                ReceiptComponent(receipt: receipt)
+                        ForEach(marketStore.requests, id: \.self) { request in
+                            NavigationLink(destination: ReceiptCheckView(request: request)) {
+                                ReceiptComponent(request: request)
                             }
                         }
                         .tint(.black)
@@ -61,6 +40,11 @@ struct ReceiptView: View {
                 Spacer()
             }
             .background(Color.LightYellow)
+            .task {
+                if let marketId = appState.uid {
+                    await marketStore.fetchAllMarketCompletionMissions(marketId: marketId)
+                }
+            }
         
     }
 }
@@ -68,6 +52,7 @@ struct ReceiptView: View {
 struct ReceiptView_Previews: PreviewProvider {
     static var previews: some View {
         ReceiptView()
+            .environmentObject(AppState(uid: "marketIdSample1"))
     }
 }
 

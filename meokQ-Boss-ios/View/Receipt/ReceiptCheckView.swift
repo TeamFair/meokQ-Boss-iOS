@@ -8,29 +8,28 @@ struct ReceiptCheckView: View {
     @State private var showSubmitAlert = false
     @State private var showRejectSheet = false
     @Environment(\.presentationMode) var presentationMode
-    let receipt: Receipt
+    let request: Request
     @State var receiptRejected: Bool = false
 
     var body: some View {
         VStack(spacing: 20) {
             HStack {
                 VStack(alignment: .leading){
-                    Text("닉네임 \(receipt.userName)")
-                        .font(Font.custom("Pretendard", size: 14)
-                            .weight(.regular))
-                    Text("\(receipt.quest.coupon)")
-                        .font(Font.custom("Pretendard", size: 16)
-                            .weight(.medium))
-                    Text("\(receipt.quest.quest)")
-                        .font(Font.custom("Pretendard", size: 16)
-                            .weight(.medium))
-                    
+//                    Text("닉네임 \(request.userId)")
+//                        .font(Font.custom("Pretendard", size: 14)
+//                            .weight(.regular))
+//                    Text("\(request.)")
+//                        .font(Font.custom("Pretendard", size: 16)
+//                            .weight(.medium))
+//                    Text("\(request.quest.quest)")
+//                        .font(Font.custom("Pretendard", size: 16)
+//                            .weight(.medium))
                 }
                 Spacer()
             }
             .padding(.top, 20)
             ScrollView {
-                Image(systemName: receipt.imageString)
+                Image(systemName: request.missionVerificationRequestImage)
                     .resizable()
                     .scaledToFit()
                     .scaleEffect(0.2)
@@ -59,7 +58,7 @@ struct ReceiptCheckView: View {
                     Text("발급하기")
                         .font(Font.custom("Pretendard", size: 20)
                             .weight(.medium))
-                        .foregroundColor(.white) 
+                        .foregroundColor(.white)
                 }
                 .frame(width: 180, height: 50)
                 .background(.pink)
@@ -113,7 +112,7 @@ struct ReceiptCheckView: View {
 
 struct ReceiptCheckView_Previews: PreviewProvider {
     static var previews: some View {
-        ReceiptCheckView(receipt: Receipt(userName: "chad", imageString: "circle", quest: questList[0]))
+        ReceiptCheckView(request: Request())
     }
 }
 

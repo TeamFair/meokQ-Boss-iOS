@@ -37,6 +37,6 @@ struct TabbarView: View {
 struct Tabview_Previews: PreviewProvider {
     static var previews: some View {
         TabbarView()
-            .environmentObject(AppState())
+            .environmentObject(AppState(uid: "marketIdSample2"))
     }
 }

@@ -11,16 +11,18 @@ import SwiftUI
 //TODO: 퀘스트 추가하기 버튼 필요
 
 struct QuestView: View {
-
     @Namespace var namespace
     @State private var selectedSection = QuestTitleSection.posting
+    @StateObject var marketStore = MarketStore()
+    @EnvironmentObject var appState: AppState
+    
     let sectionList: [QuestTitleSection] = [.posting, .checking]
 
     var body: some View {
-            ZStack{
-                VStack(spacing: 0){
-                    ScrollView{
-                        VStack(spacing: 0){
+            ZStack {
+                VStack(spacing: 0) {
+                    ScrollView {
+                        VStack(spacing: 0) {
                             HStack{
                                 Text("퀘스트")
                                     .font(Font.custom("Pretendard", size: 34)
@@ -49,9 +51,9 @@ struct QuestView: View {
                             }
                             
                             if selectedSection == .posting {
-                                QuestPostTabView()
+                                QuestPostTabView(missionList: marketStore.missions.filter { $0.status == "approved" })
                             } else {
-                                QuestCheckTabView()
+                                QuestCheckTabView(missionList: marketStore.missions.filter { $0.status == "pending" })
                             }
                             
                             Spacer()
@@ -67,12 +69,18 @@ struct QuestView: View {
                 }
             }
             .background(Color.LightYellow)
+            .task {
+                if let marketId = appState.uid {
+                    await marketStore.fetchAllMarketMissions(marketId: marketId)
+                }
+            }
     }
 }
 
 struct QuestView_Previews: PreviewProvider {
     static var previews: some View {
         QuestView()
+            .environmentObject(AppState(uid: "marketIdSample1"))
     }
 }
 
