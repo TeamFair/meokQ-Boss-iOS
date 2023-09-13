@@ -21,14 +21,15 @@ struct QuestComponent: View {
                     Text(questName)
                         .font(Font.custom("Pretendard", size: 14)
                             .weight(.regular))
+                        .foregroundColor(.Gray)
                 }
                 Spacer()
             }
-            
             .padding(.leading, 25)
             .padding(.vertical, 21)
             .background(.white)
             .cornerRadius(16)
+            .shadow(radius: 5)
         }
        
 
@@ -38,6 +39,7 @@ struct QuestComponent: View {
 struct QuestComponent_Previews: PreviewProvider {
     static var previews: some View {
         QuestComponent(couponName: "아메리카노 50% 할인권", questName: "오후 2시전 아메리카노 2잔 주문")
+            .background(.brown)
     }
 }
 

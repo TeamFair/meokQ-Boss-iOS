@@ -48,8 +48,11 @@ struct QuestAddView: View {
                     .padding(.vertical, 8)
                     .background(Color(hue: 0, saturation: 0, brightness: 0.96))
                     .cornerRadius(12)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke()
+                    }
                     .padding(.horizontal, 16)
-                
                 
         //보상란
                 HStack{
@@ -68,6 +71,10 @@ struct QuestAddView: View {
                     .padding(.vertical, 8)
                     .background(Color(hue: 0, saturation: 0, brightness: 0.96))
                     .cornerRadius(12)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke()
+                    }
                     .padding(.horizontal, 16)
                 
                 

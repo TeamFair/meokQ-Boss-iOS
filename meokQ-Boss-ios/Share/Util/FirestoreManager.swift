@@ -20,7 +20,7 @@ class FirestoreManager: ObservableObject {
 extension FirestoreManager {
     func encodeDataToMarket(documentData: [String : Any]) -> Market {
         
-        var data: Market = Market()
+        let data: Market = Market()
         
         data.address = documentData["address"] as? String ?? ""
         data.businessOwnerId = documentData["businessOwnerId"] as? String ?? ""
@@ -43,7 +43,7 @@ extension FirestoreManager {
     
     func encodeDataToMission(documentData: [String : Any]) -> Mission {
         
-        var data: Mission = Mission()
+        let data: Mission = Mission()
         if let timestamp = documentData["createdTimestamp"] as? Timestamp {
             data.createdTimestamp = timestamp.dateValue().addingTimeInterval(3600 * 9)
         }
@@ -60,10 +60,11 @@ extension FirestoreManager {
     
     func encodeDataToRequest(documentData: [String : Any]) -> Request {
         
-        var data: Request = Request()
+        let data: Request = Request()
         data.marketId = documentData["marketId"] as? String ?? ""
         data.message = documentData["message"] as? String ?? ""
         data.missionId = documentData["missionId"] as? String ?? ""
+        data.requestId = documentData["requestId"] as? String ?? ""
         data.missionVerificationRequestImage = documentData["missionVerificationRequestImage"] as? String ?? ""
         data.userId = documentData["userId"] as? String ?? ""
         data.status = documentData["status"] as? String ?? ""
@@ -79,8 +80,9 @@ extension FirestoreManager {
     
     func encodeDataToCoupon(documentData: [String : Any]) -> Coupon {
         
-        var data: Coupon = Coupon()
+        let data: Coupon = Coupon()
         data.marketId = documentData["marketId"] as? String ?? ""
+        data.missionId = documentData["missionId"] as? String ?? ""
         data.reward = documentData["reward"] as? String ?? ""
         data.status = documentData["status"] as? String ?? ""
         data.userId = documentData["userId"] as? String ?? ""
@@ -101,6 +103,15 @@ extension FirestoreManager {
         if let timestamp = documentData["redeemedTimestamp"] as? Timestamp {
             data.redeemedTimestamp = timestamp.dateValue().addingTimeInterval(3600 * 9)
         }
+        return data
+    }
+    
+    func encodeDataToUser(documentData: [String : Any]) -> User {
+        
+        let data: User = User()
+        data.displayName = documentData["displayName"] as? String ?? ""
+        data.uid = documentData["uid"] as? String ?? ""
+        
         return data
     }
 }

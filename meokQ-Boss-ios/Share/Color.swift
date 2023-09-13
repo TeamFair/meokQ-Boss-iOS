@@ -16,6 +16,7 @@ extension Color {
     static let LightRed = Color("LightRed")
     static let LightYellow = Color("LightYellow")
     static let Yellow = Color("Yellow")
+    static let Gray = Color("gray")
     
     
     /// Login Button Color

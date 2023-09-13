@@ -13,7 +13,7 @@ import SwiftUI
 struct QuestView: View {
     @Namespace var namespace
     @State private var selectedSection = QuestTitleSection.posting
-    @StateObject var marketStore = MarketStore()
+    @ObservedObject var marketStore: MarketStore
     @EnvironmentObject var appState: AppState
     
     let sectionList: [QuestTitleSection] = [.posting, .checking]
@@ -51,9 +51,9 @@ struct QuestView: View {
                             }
                             
                             if selectedSection == .posting {
-                                QuestPostTabView(missionList: marketStore.missions.filter { $0.status == "approved" })
+                                QuestPostTabView(missionList: marketStore.missions.values.filter { $0.status == "approved" })
                             } else {
-                                QuestCheckTabView(missionList: marketStore.missions.filter { $0.status == "pending" })
+                                QuestCheckTabView(missionList: marketStore.missions.values.filter { $0.status == "pending" })
                             }
                             
                             Spacer()
@@ -61,11 +61,13 @@ struct QuestView: View {
                     }
                     .padding(.top, 10)
                     Spacer()
-                        NavigationLink(destination: QuestAddView()) {
-                            Text("퀘스트 추가하기")
-                                .font(Font.custom("Pretendard", size: 20)
-                                    .weight(.semibold))
-                        }
+                    NavigationLink(destination: QuestAddView().environmentObject(appState)) {
+                        Text("퀘스트 추가하기")
+                            .padding(.vertical, 16)
+                            .frame(maxWidth: .infinity)
+                            .background(.yellow)
+                            .font(Font.custom("Pretendard", size: 20).weight(.semibold))
+                    }
                 }
             }
             .background(Color.LightYellow)
@@ -79,7 +81,7 @@ struct QuestView: View {
 
 struct QuestView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestView()
+        QuestView(marketStore: MarketStore())
             .environmentObject(AppState(uid: "marketIdSample1"))
     }
 }

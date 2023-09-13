@@ -11,14 +11,14 @@ struct ReceiptComponent: View {
     let request: Request
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-//            Text(receipt.quest.coupon)
-//                .font(Font.custom("Pretendard", size: 23)
-//                    .weight(.medium))
-//                .padding(.bottom, 9)
-//            Text(receipt.quest.quest)
-//                .font(Font.custom("Pretendard", size: 14)
-//                    .weight(.regular))
-//                .foregroundColor(Color(hue: 0, saturation: 0, brightness: 0.38))
+            Text(request.reward)
+                .font(Font.custom("Pretendard", size: 23)
+                    .weight(.medium))
+                .padding(.bottom, 9)
+            Text(request.missionDescription)
+                .font(Font.custom("Pretendard", size: 14)
+                    .weight(.regular))
+                .foregroundColor(Color(hue: 0, saturation: 0, brightness: 0.38))
             HStack(spacing: 4) {
                 Spacer()
                 Text("영수증 확인하기")

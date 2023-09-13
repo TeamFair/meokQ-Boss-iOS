@@ -12,13 +12,16 @@ class Coupon: DocumentTimestamp {
     let uuid = UUID()
     
     var couponId = ""
+    var marketId = ""
+    var missionId = ""
     var expiryTimestamp = Date()
     var issuedTimestamp = Date()
-    var marketId = ""
     var redeemedTimestamp = Date()
     var reward = ""
+    var missionDescription = ""
     var status = ""
     var userId = ""
+    var userDisplayName = ""
     
     
     init(expiryTimestamp: Date = Date(), issuedTimestamp: Date = Date(), marketId: String = "", redeemedTimestamp: Date = Date(), reward: String = "", status: String = "", userId: String = "", documentTimestamp: DocumentTimestamp = DocumentTimestamp()) {

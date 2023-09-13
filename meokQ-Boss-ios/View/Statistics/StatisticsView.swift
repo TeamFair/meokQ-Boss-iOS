@@ -15,14 +15,13 @@ struct StatisticsView: View {
     @State private var selectedSection = StatisticsTitleSection.published
     let sectionList: [StatisticsTitleSection] = [.published, .used]
 
+    @EnvironmentObject var appState: AppState
+    @ObservedObject var marketStore: MarketStore
     var body: some View {
             ZStack{
                 VStack(spacing: 0){
-                    
                     ScrollView{
-                        
                         VStack(spacing: 0){
-                            
                             HStack{
                                 Text("고객 통계")
                                     .font(Font.custom("Pretendard", size: 34)
@@ -49,11 +48,10 @@ struct StatisticsView: View {
                                     .foregroundColor(.gray)
                                     .offset(y: 18)
                             }
-                            
                             if selectedSection == .published {
-                                StatisticsSubmitFinishedTabView()
+                                StatisticsSubmitFinishedTabView(couponList: marketStore.coupons.filter{$0.status == "issued"})
                             } else {
-                                StatisticsUsedFinishedTabView()
+                                StatisticsUsedFinishedTabView(couponList: marketStore.coupons.filter{$0.status == "redeemed"})
                             }
                             
                             Spacer()
@@ -64,11 +62,18 @@ struct StatisticsView: View {
                 }
             }
             .background(Color.LightYellow)
+            .task {
+                if let marketId = appState.uid {
+                    await marketStore.fetchUser()
+                    await marketStore.fetchCouponStatistics(marketId: marketId)
+                }
+            }
     }
 }
 
 struct StatisticsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatisticsView()
+        StatisticsView(marketStore: MarketStore())
+            .environmentObject(AppState(uid: "marketIdSample2"))
     }
 }

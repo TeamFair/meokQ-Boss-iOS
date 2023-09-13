@@ -13,9 +13,10 @@ class MarketStore: FirestoreManager {
     @Published var changeCount: Int = 0
     
     @Published var mission: Mission = Mission()
-    @Published var missions: [Mission] = []
-    
+    @Published var missions: [String: Mission] = [:]
     @Published var requests: [Request] = []
+    @Published var coupons: [Coupon] = []
+    @Published var users: [User] = []
 }
 
 extension MarketStore {
@@ -33,6 +34,7 @@ extension MarketStore {
         }
     }
   
+    
     @MainActor
     func addMission(marketId: String, missionDescription: String, reward: String, missionCount: Int) async {
         let missionId = UUID().uuidString
@@ -46,22 +48,65 @@ extension MarketStore {
             "reward": reward,
             "status": "approved"
         ]
-        
+
         let missionCount: [String: Any] = [
             "missionCount": missionCount - 1
         ]
-        
+
         let MissionDocRef =  db
             .collection("markets").document(marketId)
             .collection("missions_market").document(missionId)
-        
+
         let MarketDocRef = db
             .collection("markets").document(marketId)
+
+        let batch = db.batch()
+
+        batch.setData(missionData, forDocument: MissionDocRef)
+        batch.updateData(missionCount, forDocument: MarketDocRef)
+
+        do {
+            try await batch.commit()
+            Log("Batch write succeeded")
+        } catch {
+            Log(error)
+        }
+    }
+    
+    @MainActor
+    func addCoupon(marketId: String, userId: String, reward: String, missionId: String, requestId: String) async {
+        let couponId = UUID().uuidString
+
+        let couponData: [String: Any] = [
+            "couponId": couponId,
+            "marketId": marketId,
+            "userId": userId,
+            "missionId": missionId,
+            "reward": reward,
+            "status": "issued",
+            "issuedTimestamp": Timestamp.init(date: Date.now),
+            "expiryTimestamp": Timestamp.init(date: Date.now),
+            "redeemedTimestamp": "",
+            "createdTimestamp" : Timestamp.init(date: Date.now),
+            "modifiedTimestamp": Timestamp.init(date: Date.now)
+        ]
+        
+        let requestStatus: [String: String] = [
+            "status": "approved"
+        ] 
+        
+        let MissionRequestRef = db
+            .collection("markets").document(marketId)
+            .collection("completion_requests_mission").document(requestId)
+        
+        let UserCouponsRef = db
+            .collection("users").document(userId)
+            .collection("coupons_market").document(couponId)
         
         let batch = db.batch()
         
-        batch.setData(missionData, forDocument: MissionDocRef)
-        batch.updateData(missionCount, forDocument: MarketDocRef)
+        batch.updateData(requestStatus, forDocument: MissionRequestRef)
+        batch.setData(couponData, forDocument: UserCouponsRef)
         
         do {
             try await batch.commit()
@@ -73,9 +118,8 @@ extension MarketStore {
     
     @MainActor
     func fetchAllMarketMissions(marketId: String) async {
-        
         do {
-            self.missions = []
+            var newMissions: [Mission] = []
             let querySnapshot = try await db.collection("markets")
                 .document(marketId)
                 .collection("missions_market")
@@ -85,19 +129,21 @@ extension MarketStore {
             for document in querySnapshot.documents {
                 let documentData = document.data()
                 let data = encodeDataToMission(documentData: documentData)
-                self.missions.append(data)
-                Log(self.missions)
+                newMissions.append(data)
             }
+            
+            self.missions = Dictionary(uniqueKeysWithValues: newMissions.map { ($0.missionId, $0) })
+            Log(self.missions)
         } catch {
             Log(error)
         }
     }
     
+    
     @MainActor
     func fetchAllMarketCompletionMissions(marketId: String) async {
-        
         do {
-            self.missions = []
+            self.requests = []
             let querySnapshot = try await db.collection("markets")
                 .document(marketId)
                 .collection("completion_requests_mission")
@@ -107,6 +153,14 @@ extension MarketStore {
             for document in querySnapshot.documents {
                 let documentData = document.data()
                 let data = encodeDataToRequest(documentData: documentData)
+                
+                if let reward = self.missions[data.missionId]?.reward {
+                    data.reward = reward
+                }
+                if let missionDescription = self.missions[data.missionId]?.missionDescription {
+                    data.missionDescription = missionDescription
+                }
+                
                 self.requests.append(data)
                 Log(self.missions)
             }
@@ -115,26 +169,75 @@ extension MarketStore {
         }
     }
     
+    @MainActor
+    func rejectRequest(marketId: String, missionId: String, requestId: String, message: String) async {
+        let requestStatus: [String: Any] = [
+            "status": "rejected",
+            "message": message,
+            "modifiedTimestamp": Timestamp.init(date: Date.now)
+        ]
+        
+        let MissionRequestRef = db
+            .collection("markets").document(marketId)
+            .collection("missions_market").document(missionId)
+            .collection("completion_requests_mission").document(requestId)
+        
+        let batch = db.batch()
+                
+        batch.updateData(requestStatus, forDocument: MissionRequestRef)
+        
+        do {
+            try await batch.commit()
+            Log("Batch write succeeded")
+        } catch {
+            Log(error)
+        }
+    }
     
-//    func fetchMissionStatus(district: String, marketId: String) {
-//        guard let databasePath = self.missionStatusDatabasePath?.child(marketId) else {
-//            return
-//        }
-//
-//        databasePath.observe(.value) { [weak self] snapshot, _ in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let json = snapshot.value as? [String: Any] {
-//                do {
-//                    let missionStatusData = try JSONSerialization.data(withJSONObject: json)
-//                    let missionStatus = try self.decoder.decode([String: UserInfo].self, from: missionStatusData)
-//                    completion(missionStatus)
-//                } catch {
-//                    completion(nil)
-//                }
-//            }
-//        }
-//    }
+    @MainActor
+    func fetchCouponStatistics(marketId: String) async {
+        self.coupons = []
+        do {
+            for user in users {
+                let querySnapshot = try await db.collection("users")
+                    .document(user.uid)
+                    .collection("coupons_market")
+                    .whereField("marketId", isEqualTo: marketId)
+                    .getDocuments()
+                
+                for document in querySnapshot.documents {
+                    let documentData = document.data()
+                    let data = encodeDataToCoupon(documentData: documentData)
+                    data.userDisplayName = user.displayName
+                    
+                    print(data.missionId)
+                    if let missionDescription = missions[data.missionId]?.missionDescription {
+                        data.missionDescription = missionDescription
+                    }
+                    self.coupons.append(data)
+                }
+            }
+            Log(self.coupons)
+        } catch {
+            Log(error)
+        }
+    }
+    
+    @MainActor
+    func fetchUser() async {
+        do {
+            self.users = []
+            let querySnapshot = try await db.collection("users")
+                .getDocuments()
+            
+            for document in querySnapshot.documents {
+                let documentData = document.data()
+                let data = encodeDataToUser(documentData: documentData)
+                self.users.append(data)
+            }
+            Log(self.users)
+        } catch {
+            Log(error)
+        }
+    }
 }

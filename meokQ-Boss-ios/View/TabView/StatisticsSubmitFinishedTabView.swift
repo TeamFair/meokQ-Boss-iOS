@@ -11,23 +11,28 @@
 import SwiftUI
 
 struct StatisticsSubmitFinishedTabView: View {
-    
-    var submitFinishedCouponArray = ["오후 2시전 아메리카노 2잔 주문", "오후 2시전 아메리카노 2잔 주문"]
-    var submitFinishedQuestArray = ["아메리카노 50% 할인권", "아메리카노 50% 할인권"]
-    
+    let couponList: [Coupon]
     var body: some View {
         LazyVGrid(columns: [GridItem(.flexible())], spacing: 20) {
-            ForEach(0..<submitFinishedQuestArray.count) { i in
-                StatisticsComponent(couponName: submitFinishedCouponArray[i], questName: submitFinishedQuestArray[i])
+            ForEach(couponList, id:\.couponId) { coupon in
+                StatisticsComponent(time: dateToString(date: coupon.issuedTimestamp), userName: coupon.userDisplayName, couponName: coupon.reward, questName: coupon.missionDescription)
                     .padding(.horizontal, 16)
             }
         }
         .navigationBarTitle("고객 통계", displayMode: .large)
     }
+    
+    func dateToString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd(E)"
+
+        let dateString = dateFormatter.string(from: date)
+        return "\(dateString) 발급완료"
+    }
 }
 
 struct StatisticsSubmitFinishedTabView_Previews: PreviewProvider {
     static var previews: some View {
-        StatisticsSubmitFinishedTabView()
+        StatisticsSubmitFinishedTabView(couponList: [Coupon()])
     }
 }

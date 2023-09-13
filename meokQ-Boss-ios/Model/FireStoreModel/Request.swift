@@ -13,9 +13,12 @@ class Request: DocumentTimestamp {
     var marketId = ""
     var message = ""
     var missionId = ""
+    var requestId = ""
     var missionVerificationRequestImage = ""
     var status = ""
     var userId = ""
+    var reward = ""
+    var missionDescription = ""
 }
 
 

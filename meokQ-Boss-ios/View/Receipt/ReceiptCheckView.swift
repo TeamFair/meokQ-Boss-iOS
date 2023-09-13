@@ -1,5 +1,6 @@
 
 import SwiftUI
+import Kingfisher
 
 //TODO: 상단 유저+미션+보상 정보 UI가 완료되지 않았습니다
 //TODO: 이미지를 받아오는 작업을 완료하지 않았습니다
@@ -10,29 +11,49 @@ struct ReceiptCheckView: View {
     @Environment(\.presentationMode) var presentationMode
     let request: Request
     @State var receiptRejected: Bool = false
+    @ObservedObject var marketStore: MarketStore
 
     var body: some View {
         VStack(spacing: 20) {
-            HStack {
-                VStack(alignment: .leading){
-//                    Text("닉네임 \(request.userId)")
-//                        .font(Font.custom("Pretendard", size: 14)
-//                            .weight(.regular))
-//                    Text("\(request.)")
-//                        .font(Font.custom("Pretendard", size: 16)
-//                            .weight(.medium))
-//                    Text("\(request.quest.quest)")
-//                        .font(Font.custom("Pretendard", size: 16)
-//                            .weight(.medium))
+            VStack(alignment: .leading) {
+                Text(request.reward)
+                    .font(Font.custom("Pretendard", size: 23)
+                        .weight(.medium))
+                Text(request.missionDescription)
+                    .font(Font.custom("Pretendard", size: 12)
+                        .weight(.medium))
+                    .foregroundColor(.Gray)
+                HStack {
+                    Spacer()
+                    Text(getUserDisplayName())
+                        .font(Font.custom("Pretendard", size: 14)
+                            .weight(.regular))
                 }
-                Spacer()
             }
+            .padding(.vertical, 21)
+            .padding(.horizontal, 25)
+            .background(
+                Color.white
+                    .shadow(radius: 5)
+            )
             .padding(.top, 20)
             ScrollView {
-                Image(systemName: request.missionVerificationRequestImage)
+                KFImage(URL(string: request.missionVerificationRequestImage))
+                    .placeholder { //플레이스 홀더 설정
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(minWidth: 200)
+                    }
+                    .onSuccess {r in //성공
+                        Log("King succes: \(r)")
+                    }
+                    .onFailure { e in //실패
+                        Log("King failure: \(e)")
+                    }
                     .resizable()
                     .scaledToFit()
-                    .scaleEffect(0.2)
+//                    .scaleEffect(0.2)
                     .frame(minHeight: 550, maxHeight: 700)
                     .background(.gray.opacity(0.2))
             }
@@ -94,7 +115,7 @@ struct ReceiptCheckView: View {
             }
         }
         .sheet(isPresented: $showRejectSheet) {
-            SheetView(showRejectSheet: $showRejectSheet, receiptRejected: $receiptRejected).onDisappear {
+            SheetView(showRejectSheet: $showRejectSheet, receiptRejected: $receiptRejected, request: request, marketStore: marketStore).onDisappear {
                 if receiptRejected  {
                     DispatchQueue.main.asyncAfter(deadline: .now()) {
                         presentationMode.wrappedValue.dismiss()
@@ -104,107 +125,23 @@ struct ReceiptCheckView: View {
             }
         }
     }
+    
+    func getUserDisplayName() -> String {
+        let user = marketStore.users.filter { $0.uid == request.userId }.first
+        return user?.displayName ?? ""
+    }
+    
     func summit() {
         // TODO: 쿠폰 발행 로직 및 해당 영수증 리스트에서 삭제
+        Task {
+            await marketStore.addCoupon(marketId: request.marketId, userId: request.userId, reward: request.reward, missionId: request.missionId, requestId: request.requestId)
+        }
         presentationMode.wrappedValue.dismiss()
     }
 }
 
 struct ReceiptCheckView_Previews: PreviewProvider {
     static var previews: some View {
-        ReceiptCheckView(request: Request())
-    }
-}
-
-
-struct SheetView: View {
-    @State private var showCancelAlert = false
-    @Binding var showRejectSheet: Bool
-    @Binding var receiptRejected: Bool
-    @Environment(\.presentationMode) var presentationMode
-
-    let initialText: String = "반려하신 사유를 작성해주세요"
-    @State var text: String = ""
-    var reasonList: [String] = ["직접 입력", "영수증이 불명확합니다", "영수증과 퀘스트가 일치하지 않습니다"]
-    var reasonSelectedIndex: Int = 0
-    var body: some View {
-        VStack(alignment: .center, spacing: 16) {
-            
-            HStack {
-                Text("영수증 반려 사유 입력하기")
-                    .font(Font.custom("Pretendard", size: 18)
-                        .weight(.bold))
-                Spacer()
-            }
-            Menu {
-                ForEach(reasonList, id: \.self) { reason in
-                    Button {
-                        text = (reason == reasonList[0] ? "" : reason)
-                    } label: {
-                        Text(reason)
-                    }
-                }
-            } label: {
-                HStack {
-                    Text(reasonList.contains(text) ? text: reasonList[0])
-                        .font(.system(size: 14, weight: .medium))
-                    Spacer()
-                    Image(systemName: "chevron.down")
-                }.padding(.horizontal, 12)
-                
-                
-            }
-            .frame(height: 40)
-            .frame(maxWidth: .infinity)
-            .background(Color(hue: 0, saturation: 0, brightness: 0.96))
-            .cornerRadius(12)
-            .foregroundColor(.black)
-            
-            
-            TextField(initialText, text: $text)
-                .font(Font.custom("Pretendard", size: 14)
-                    .weight(.bold))
-                .frame(minHeight: 80)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(Color(hue: 0, saturation: 0, brightness: 0.96))
-                .cornerRadius(12)
-            
-            
-            Spacer()
-            
-            Button {
-                showCancelAlert = true
-            } label: {
-                Text("반려하기")
-                    .font(Font.custom("Pretendard", size: 18)
-                        .weight(.medium))
-            }
-            .frame(height: 50)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(.white)
-            .background(.red)
-            .cornerRadius(12)
-            .alert(isPresented: $showCancelAlert) {
-                Alert(title: Text("영수증을 반려하시겠습니까?"), message: Text("반려 후 되돌릴 수 없으니 유의 부탁드립니다"),
-                      primaryButton:  .default(Text("반려"),
-                                               action: {
-                    // TODO: 리스트에서 해당 영수증 삭제
-                    showRejectSheet = false
-                    receiptRejected = true
-                   // presentationMode.wrappedValue.dismiss()
-                   
-                }),
-                      secondaryButton:.cancel(Text("취소")))
-            }
-        }
-        .padding(.vertical, 32)
-        .padding(.horizontal, 16)
-    }
-    
-}
-struct SheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        SheetView(showRejectSheet: .constant(true), receiptRejected: .constant(false))
+        ReceiptCheckView(request: Request(), marketStore: MarketStore())
     }
 }
