@@ -19,7 +19,7 @@ class UserStore: FirestoreManager {
 extension UserStore {
     //MARK: 회원탈퇴
     @MainActor
-    func deleteDataFromFirestore(uid: String)  {
+    func deleteDataFromFirestore(uid: String, completion: @escaping ()->Void)  {
         // 삭제할 데이터의 경로 지정
         //let path = "/users/\(uid)" // 예시 경로
         
@@ -28,6 +28,17 @@ extension UserStore {
                 print("Error deleting data: \(error)")
             } else {
                 print("Data deleted successfully")
+                completion()
+            }
+        }
+        
+        Auth.auth().currentUser?.delete { error in
+            if let error = error {
+                // 계정 삭제 중 오류가 발생한 경우 처리
+                print("Error deleting account: \(error.localizedDescription)")
+            } else {
+                // 계정이 성공적으로 삭제된 경우
+                print("Account deleted successfully.")
             }
         }
     }

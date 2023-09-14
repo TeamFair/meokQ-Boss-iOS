@@ -9,14 +9,12 @@ import Foundation
 
 
 final class AppState : ObservableObject {
-    @Published var isLogin: Bool
-    @Published var roginViewId: UUID
+    @Published var loginViewId: UUID
     @Published var homeViewId: UUID
     @Published var uid: String?
     
-    init(isLogin: Bool = false, roginViewId: UUID = UUID(), homeViewId: UUID = UUID(), uid: String? = nil) {
-        self.isLogin = isLogin
-        self.roginViewId = roginViewId
+    init(loginViewId: UUID = UUID(), homeViewId: UUID = UUID(), uid: String? = nil) {
+        self.loginViewId = loginViewId
         self.homeViewId = homeViewId
         self.uid = uid
     }

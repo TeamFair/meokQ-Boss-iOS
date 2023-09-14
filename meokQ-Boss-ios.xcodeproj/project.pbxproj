@@ -46,6 +46,12 @@
 		FF23BC282AB14EB700434A6A /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23BC272AB14EB700434A6A /* UserStore.swift */; };
 		FF23BC2F2AB1520500434A6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF23BC2E2AB1520500434A6A /* GoogleService-Info.plist */; };
 		FF23BC312AB1613100434A6A /* AppleLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23BC302AB1613100434A6A /* AppleLoginViewModel.swift */; };
+		FF23BC372AB33EAD00434A6A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23BC362AB33EAD00434A6A /* View.swift */; };
+		FF23BC3A2AB33EFD00434A6A /* PretendardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23BC392AB33EFD00434A6A /* PretendardText.swift */; };
+		FF23BC3C2AB33F2B00434A6A /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23BC3B2AB33F2B00434A6A /* OffsetKey.swift */; };
+		FF23BC3F2AB340EB00434A6A /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23BC3E2AB340EB00434A6A /* SettingView.swift */; };
+		FF23BC412AB3411E00434A6A /* SignoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23BC402AB3411E00434A6A /* SignoutView.swift */; };
+		FF23BC432AB341C300434A6A /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23BC422AB341C300434A6A /* Setting.swift */; };
 		FF3D3E932A9EC0D80041B64A /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D3E922A9EC0D80041B64A /* FirebaseStorageManager.swift */; };
 		FF3D3E952A9EC0E60041B64A /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D3E942A9EC0E60041B64A /* FirestoreManager.swift */; };
 		FF3D3E9A2A9EC1420041B64A /* DocumentTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D3E992A9EC1420041B64A /* DocumentTimestamp.swift */; };
@@ -110,6 +116,12 @@
 		FF23BC2D2AB1514A00434A6A /* meokQ-Boss-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "meokQ-Boss-ios.entitlements"; sourceTree = "<group>"; };
 		FF23BC2E2AB1520500434A6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF23BC302AB1613100434A6A /* AppleLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginViewModel.swift; sourceTree = "<group>"; };
+		FF23BC362AB33EAD00434A6A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		FF23BC392AB33EFD00434A6A /* PretendardText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretendardText.swift; sourceTree = "<group>"; };
+		FF23BC3B2AB33F2B00434A6A /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
+		FF23BC3E2AB340EB00434A6A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		FF23BC402AB3411E00434A6A /* SignoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutView.swift; sourceTree = "<group>"; };
+		FF23BC422AB341C300434A6A /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		FF3D3E922A9EC0D80041B64A /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		FF3D3E942A9EC0E60041B64A /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		FF3D3E992A9EC1420041B64A /* DocumentTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTimestamp.swift; sourceTree = "<group>"; };
@@ -250,6 +262,7 @@
 				FF3D3E962A9EC1300041B64A /* FireStoreModel */,
 				FFFC6FC62A908352007C57AC /* Store */,
 				FF1873DF2A8CFE6F00F60E81 /* AppState.swift */,
+				FF23BC422AB341C300434A6A /* Setting.swift */,
 				FF1873EA2A8CFF4100F60E81 /* LoginButton.swift */,
 			);
 			path = Model;
@@ -266,10 +279,13 @@
 		FF1873DB2A8CFD3100F60E81 /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				FF23BC382AB33EEA00434A6A /* Modifier */,
 				FF3D3E912A9EC0CB0041B64A /* Util */,
 				FF1873F42A8D031000F60E81 /* Fonts */,
 				FF1873EE2A8CFFE600F60E81 /* Color.swift */,
 				FF1873F02A8D027700F60E81 /* Font.swift */,
+				FF23BC362AB33EAD00434A6A /* View.swift */,
+				FF23BC3B2AB33F2B00434A6A /* OffsetKey.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -277,6 +293,7 @@
 		FF1873DC2A8CFD3700F60E81 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF23BC3D2AB340E100434A6A /* Setting */,
 				FF1873E12A8CFEA000F60E81 /* Login */,
 				E50FBF882A91017300ACF024 /* Quest */,
 				E50FBFA12A9101C300ACF024 /* Receipt */,
@@ -313,6 +330,23 @@
 				FF1873F52A8D031D00F60E81 /* SFPRODISPLAYREGULAR.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FF23BC382AB33EEA00434A6A /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				FF23BC392AB33EFD00434A6A /* PretendardText.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		FF23BC3D2AB340E100434A6A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				FF23BC3E2AB340EB00434A6A /* SettingView.swift */,
+				FF23BC402AB3411E00434A6A /* SignoutView.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		FF3D3E912A9EC0CB0041B64A /* Util */ = {
@@ -452,28 +486,34 @@
 				FF3D3E952A9EC0E60041B64A /* FirestoreManager.swift in Sources */,
 				E50FBFB22A9101C300ACF024 /* StatisticsView.swift in Sources */,
 				FF1873E92A8CFEB500F60E81 /* KakaoLoginButtonView.swift in Sources */,
+				FF23BC3A2AB33EFD00434A6A /* PretendardText.swift in Sources */,
 				FFFC6FCE2A90998A007C57AC /* Request.swift in Sources */,
 				FFFC6FCA2A908472007C57AC /* Market.swift in Sources */,
 				FFFC6FC82A9083E6007C57AC /* MarketStore.swift in Sources */,
 				FF1873E02A8CFE6F00F60E81 /* AppState.swift in Sources */,
+				FF23BC372AB33EAD00434A6A /* View.swift in Sources */,
 				E50FBFB82A9101C300ACF024 /* QuestComponent.swift in Sources */,
 				E50FBF8C2A9101A200ACF024 /* QuestView.swift in Sources */,
 				FF3D3E9C2A9EC1670041B64A /* Mission.swift in Sources */,
 				FF1873EB2A8CFF4100F60E81 /* LoginButton.swift in Sources */,
+				FF23BC412AB3411E00434A6A /* SignoutView.swift in Sources */,
 				FFFC6FED2A9580CD007C57AC /* TabbarView.swift in Sources */,
 				E50FBFB92A9101C300ACF024 /* StatisticsComponent.swift in Sources */,
 				E50FBFAE2A9101C300ACF024 /* StatisticsUsedFinishedTabView.swift in Sources */,
 				E50FBFBF2A9101C300ACF024 /* StatisticsTopTabbar.swift in Sources */,
 				FF4E7DBE2AB05B130052A19A /* SheetView.swift in Sources */,
 				FF1873CC2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift in Sources */,
+				FF23BC3F2AB340EB00434A6A /* SettingView.swift in Sources */,
 				E50FBFB12A9101C300ACF024 /* QuestCheckTabView.swift in Sources */,
 				E50FBFBA2A9101C300ACF024 /* ReceiptComponent.swift in Sources */,
 				FF1873E72A8CFEB500F60E81 /* LoginView.swift in Sources */,
+				FF23BC3C2AB33F2B00434A6A /* OffsetKey.swift in Sources */,
 				FF1873F12A8D027700F60E81 /* Font.swift in Sources */,
 				FF1873EF2A8CFFE600F60E81 /* Color.swift in Sources */,
 				E50FBF8B2A9101A200ACF024 /* QuestAddView.swift in Sources */,
 				FF3D3E932A9EC0D80041B64A /* FirebaseStorageManager.swift in Sources */,
 				E50FBFAF2A9101C300ACF024 /* QuestPostTabView.swift in Sources */,
+				FF23BC432AB341C300434A6A /* Setting.swift in Sources */,
 				FF23BC312AB1613100434A6A /* AppleLoginViewModel.swift in Sources */,
 				E50FBFB02A9101C300ACF024 /* StatisticsSubmitFinishedTabView.swift in Sources */,
 				FF3D3E9A2A9EC1420041B64A /* DocumentTimestamp.swift in Sources */,

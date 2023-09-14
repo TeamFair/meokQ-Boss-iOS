@@ -14,13 +14,25 @@ import KakaoSDKAuth
 import _AuthenticationServices_SwiftUI
 
 struct LoginView: View {
+    
     @EnvironmentObject var appState: AppState
     @AppStorage("uid") var uid: String = ""
     @AppStorage("userName") var userName: String = ""
     @AppStorage("isLogin") var isLogin: Bool = false
     
-    @StateObject var marketStore = MarketStore()
-    @EnvironmentObject var userStore: UserStore
+    @EnvironmentObject var marketViewModel: MarketStore
+    @EnvironmentObject var userViewModel: UserStore
+    
+    @StateObject var appleLoginViewModel = AppleLoginViewModel()
+    @State var fullName = ""
+    
+    var buttonAction: () -> Void {
+        {
+            appState.uid = "testUid"
+            uid = "testUid"
+            isLogin = true
+        }
+    }
     
     var kakaoButtonAction: () -> Void {
         {
@@ -53,15 +65,14 @@ struct LoginView: View {
                     KakaoLoginButtonView(buttonAction: kakaoButtonAction)
                     GoogleLoginButtonView(buttonAction: googleButtonAction)
                     AppleLoginButtonView()
-                        .environmentObject(userStore)
-                        .environmentObject(appState)
+                        .environmentObject(userViewModel)
                 }
                 .padding(.bottom, 100)
                 NavigationLink(
                     destination: TabbarView()
                         .environmentObject(appState)
-                        .environmentObject(marketStore)
-                        .environmentObject(userStore)
+                        .environmentObject(marketViewModel)
+                        .environmentObject(userViewModel)
                 ) {
                     Text("로그인 없이 둘러보기")
                         .font(.system(size: 12))
@@ -74,9 +85,12 @@ struct LoginView: View {
                     }
             }
         }
+        .onAppear{
+            print("유저 정보 \(uid),\(userName),\(isLogin)")
+        }
         .navigationBarBackButtonHidden()
         .accentColor(.black)
-        .id(appState.roginViewId)
+        .id(appState.loginViewId)
     }
 }
 
@@ -89,6 +103,7 @@ struct LoginView_Previews: PreviewProvider {
 extension LoginView {
     // 상태 체크
     func googleSigninButtonAction() {
+        print("is pushed")
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
                 // 로그아웃 상태
@@ -96,6 +111,8 @@ extension LoginView {
                 googleSignInFireAuthSignup()
             } else {
                 // 로그인 상태
+                Log(error)
+                Log(user?.profile?.email ?? "없다잉")
                 guard let profile = user?.profile else { return }
                 isLogin = true
             }
@@ -112,6 +129,9 @@ extension LoginView {
         // Create Google Sign In configuration object.
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
+//
+//        GIDSignIn.sharedInstance.signOut()
+//        GIDSignIn.sharedInstance.disconnect()
         
         GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { signInResult, error in
             guard let result = signInResult else {
@@ -151,8 +171,7 @@ extension LoginView {
                     self.uid = resultuid
                     self.userName = profile.name
                     Task {
-                        appState.uid = resultuid
-                        await userStore.addNewUser(uid: resultuid, displayName: userName)
+                        await userViewModel.addNewUser(uid: resultuid, displayName: userName)
                         isLogin = true
                     }
                     
@@ -178,8 +197,7 @@ extension LoginView {
                 Log("다음 사용자 uid : \(result?.user.uid ?? "")")
                 self.uid = result?.user.uid ?? ""
                 Task {
-                    appState.uid = self.uid
-                    await userStore.addNewUser(uid: self.uid, displayName: userName)
+                    await userViewModel.addNewUser(uid: self.uid, displayName: userName)
                     isLogin = true
                 }
                 

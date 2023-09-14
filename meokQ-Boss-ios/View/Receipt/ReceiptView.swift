@@ -10,22 +10,17 @@ import SwiftUI
 // 영수증 Tab입니다.
 
 struct ReceiptView: View {
+    @AppStorage("uid") var uid: String = ""
+    @AppStorage("userName") var userName: String = ""
+    @AppStorage("isLogin") var isLogin: Bool = false
+    
+    @Binding var viewTitle: String
     @ObservedObject var marketStore: MarketStore
     @EnvironmentObject var appState: AppState
     
     var body: some View {
             VStack (spacing:0){
                 ScrollView {
-                    
-                    HStack{
-                        Text("영수증")
-                            .font(Font.custom("Pretendard", size: 34)
-                                .weight(.bold))
-                        Spacer()
-                    }
-                    .padding(.leading, 16)
-                    .padding(.top, 23)
-                    
                     LazyVGrid(columns: [GridItem(.flexible())],spacing: 16) {
                         ForEach(marketStore.requests, id: \.self) { request in
                             NavigationLink(destination: ReceiptCheckView(request: request, marketStore: marketStore)) {
@@ -41,16 +36,15 @@ struct ReceiptView: View {
             }
             .background(Color.LightYellow)
             .task {
-                if let marketId = appState.uid {
-                    await marketStore.fetchAllMarketCompletionMissions(marketId: marketId)
-                }
+                viewTitle = "영수증"
+                await marketStore.fetchAllMarketCompletionMissions(marketId: uid)
             }
     }
 }
 
 struct ReceiptView_Previews: PreviewProvider {
     static var previews: some View {
-        ReceiptView(marketStore: MarketStore())
+        ReceiptView(viewTitle: .constant("영수증"),marketStore: MarketStore())
             .environmentObject(AppState(uid: "marketIdSample1"))
     }
 }

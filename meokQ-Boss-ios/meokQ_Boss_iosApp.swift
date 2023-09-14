@@ -21,6 +21,7 @@ struct meokQ_Boss_iosApp: App {
     @AppStorage("isLogin") var isLogin: Bool = false
     @AppStorage("isFirstLaunch") var isNotFirstLaunch = false
     
+    @StateObject var marketStore = MarketStore()
     @StateObject var userStore = UserStore()
     
     init() {
@@ -42,10 +43,12 @@ struct meokQ_Boss_iosApp: App {
                 if isLogin {
                     TabbarView()
                         .environmentObject(appState)
+                        .environmentObject(marketStore)
                         .environmentObject(userStore)
                 } else {
                     LoginView()
                         .environmentObject(appState)
+                        .environmentObject(marketStore)
                         .environmentObject(userStore)
                 }
             }
