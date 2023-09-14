@@ -10,27 +10,25 @@ import SwiftUI
 
 
 struct StatisticsView: View {
-    @State private var selectedTab = 0
+    @AppStorage("uid") var uid: String = ""
+    @AppStorage("userName") var userName: String = ""
+    @AppStorage("isLogin") var isLogin: Bool = false
     @Namespace var namespace
+    
+    @State private var selectedTab = 0
     @State private var selectedSection = StatisticsTitleSection.published
+    @Binding var viewTitle: String
+    
+    @ObservedObject var marketStore: MarketStore
+    @EnvironmentObject var appState: AppState
+    
     let sectionList: [StatisticsTitleSection] = [.published, .used]
 
-    @EnvironmentObject var appState: AppState
-    @ObservedObject var marketStore: MarketStore
     var body: some View {
             ZStack{
                 VStack(spacing: 0){
                     ScrollView{
                         VStack(spacing: 0){
-                            HStack{
-                                Text("고객 통계")
-                                    .font(Font.custom("Pretendard", size: 34)
-                                        .weight(.bold))
-                                Spacer()
-                            }
-                            .padding(.leading, 16)
-                            .padding(.top, 23)
-                            
                             HStack(spacing: 30) {
                                 ForEach(sectionList, id: \.self) { section in
                                     StatisticsTitleTextView(section: section, namespace: namespace, selectedSection: $selectedSection)
@@ -63,17 +61,16 @@ struct StatisticsView: View {
             }
             .background(Color.LightYellow)
             .task {
-                if let marketId = appState.uid {
-                    await marketStore.fetchUser()
-                    await marketStore.fetchCouponStatistics(marketId: marketId)
-                }
+                viewTitle = "고객 통계"
+                await marketStore.fetchUser()
+                await marketStore.fetchCouponStatistics(marketId: uid)
             }
     }
 }
 
 struct StatisticsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatisticsView(marketStore: MarketStore())
+        StatisticsView(viewTitle: .constant("고객 통계"), marketStore: MarketStore())
             .environmentObject(AppState(uid: "marketIdSample2"))
     }
 }

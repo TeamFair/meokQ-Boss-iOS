@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct TabbarView: View {
+    @AppStorage("uid") var uid: String = ""
+    @AppStorage("userName") var userName: String = ""
+    @AppStorage("isLogin") var isLogin: Bool = false
+    
+    @State var viewTitle = ""
     @StateObject var marketStore = MarketStore()
     @EnvironmentObject var appState: AppState
     
@@ -18,35 +23,44 @@ struct TabbarView: View {
     
     var body: some View {
         TabView {
-            QuestView(marketStore: marketStore)
+            QuestView(viewTitle: $viewTitle, marketStore: marketStore)
                 .tabItem {
                     Image(systemName: "star.fill")
                     Text("퀘스트")
                 }
                 .navigationBarBackButtonHidden()
             
-            ReceiptView(marketStore: marketStore)
+            ReceiptView(viewTitle: $viewTitle, marketStore: marketStore)
                 .tabItem{
                     Image(systemName: "wallet.pass.fill")
                     Text("영수증")
                 }
                 .navigationBarBackButtonHidden()
             
-            StatisticsView(marketStore: marketStore)
+            StatisticsView(viewTitle: $viewTitle, marketStore: marketStore)
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                     Text("통계")
                 }
                 .navigationBarBackButtonHidden()
         }
+        .navigationTitle(viewTitle)
+        .navigationBarTitleDisplayMode(.inline)
         .tint(.black)
         .task {
-            if let marketId = appState.uid {
-                await marketStore.fetchUser()
-                await marketStore.fetchMarket(marketId: marketId)
+            await marketStore.fetchUser()
+            await marketStore.fetchMarket(marketId: uid)
+        }
+        .navigationBarBackButtonHidden(isLogin)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: SettingView().environmentObject(appState)) {
+                    Image(systemName: "gearshape")
+                        .foregroundColor(.black)
+                        .opacity(isLogin ? 1 : 0)
+                }
             }
         }
-        .navigationBarBackButtonHidden()
     }
 }
 
