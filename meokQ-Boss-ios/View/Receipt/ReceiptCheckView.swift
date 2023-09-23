@@ -115,7 +115,7 @@ struct ReceiptCheckView: View {
             }
         }
         .sheet(isPresented: $showRejectSheet) {
-            SheetView(showRejectSheet: $showRejectSheet, receiptRejected: $receiptRejected, request: request, marketStore: marketStore).onDisappear {
+            SheetView(request: request, showRejectSheet: $showRejectSheet, receiptRejected: $receiptRejected, marketStore: marketStore).onDisappear {
                 if receiptRejected  {
                     DispatchQueue.main.asyncAfter(deadline: .now()) {
                         presentationMode.wrappedValue.dismiss()

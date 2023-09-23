@@ -8,19 +8,18 @@
 import SwiftUI
 
 struct SheetView: View {
+    let initialText: String = "반려하신 사유를 작성해주세요"
+    var reasonList: [String] = ["직접 입력", "영수증이 불명확합니다", "영수증과 퀘스트가 일치하지 않습니다"]
+    var reasonSelectedIndex: Int = 0
+    let request: Request
+
+    @State var text: String = ""
     @State private var showCancelAlert = false
     @Binding var showRejectSheet: Bool
     @Binding var receiptRejected: Bool
-    @Environment(\.presentationMode) var presentationMode
     
-    let initialText: String = "반려하신 사유를 작성해주세요"
-    @State var text: String = ""
-    var reasonList: [String] = ["직접 입력", "영수증이 불명확합니다", "영수증과 퀘스트가 일치하지 않습니다"]
-    var reasonSelectedIndex: Int = 0
-    
-    let request: Request
     @ObservedObject var marketStore: MarketStore
-    
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
@@ -76,6 +75,9 @@ struct SheetView: View {
                 Spacer()
                 
                 Button {
+                    Task {
+                        await marketStore.rejectRequest(marketId: request.marketId, missionId: request.missionId, requestId: request.requestId, message: text)
+                    }
                     showCancelAlert = true
                 } label: {
                     Text("반려하기")
@@ -111,6 +113,6 @@ struct SheetView: View {
 }
 struct SheetView_Previews: PreviewProvider {
     static var previews: some View {
-        SheetView(showRejectSheet: .constant(true), receiptRejected: .constant(false), request: Request(), marketStore: MarketStore())
+        SheetView(request: Request(), showRejectSheet: .constant(true), receiptRejected: .constant(false), marketStore: MarketStore())
     }
 }
