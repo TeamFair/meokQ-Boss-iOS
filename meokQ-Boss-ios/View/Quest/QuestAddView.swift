@@ -93,8 +93,9 @@ struct QuestAddView: View {
                                 .weight(.semibold))
                             .foregroundColor(Color.black)
                     }
+                    .disabled(marketStore.market.missionCount == 0)
                     .frame(maxWidth: .infinity)
-                    .background(Color.Yellow)
+                    .background(marketStore.market.missionCount == 0 ? Color.gray : Color.Yellow)
                     .alert(isPresented: $alertMessage) {
                         Alert(title: Text("퀘스트를 추가하시겠습니까?"), message: Text("추가 후 수정이 제한되니 유의 부탁드립니다"),
                               primaryButton:  .default(Text("확인") ,action: {

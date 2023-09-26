@@ -19,27 +19,39 @@ class UserStore: FirestoreManager {
 extension UserStore {
     //MARK: 회원탈퇴
     @MainActor
-    func deleteDataFromFirestore(uid: String, completion: @escaping ()->Void)  {
+    func deleteDataFromFirestore(uid: String, completion: @escaping ()->Void) async {
         // 삭제할 데이터의 경로 지정
         //let path = "/users/\(uid)" // 예시 경로
         
-        db.collection("users").document(uid).delete{ error in
-            if let error = error {
-                print("Error deleting data: \(error)")
-            } else {
-                print("Data deleted successfully")
-                completion()
-            }
-        }
         
-        Auth.auth().currentUser?.delete { error in
-            if let error = error {
-                // 계정 삭제 중 오류가 발생한 경우 처리
-                print("Error deleting account: \(error.localizedDescription)")
-            } else {
-                // 계정이 성공적으로 삭제된 경우
-                print("Account deleted successfully.")
+        let deleteMarket: [String: Any] = [
+            "isWithdrawal": true,
+            "withdrawalTimestamp": Timestamp.init(date: Date.now)
+        ]
+        
+        let marketRef = db
+            .collection("markets").document(uid)
+        let userRef = db.collection("users").document(uid)
+        
+        
+        let batch = db.batch()
+        
+        batch.updateData(deleteMarket, forDocument: marketRef)
+        batch.deleteDocument(userRef)
+        
+        do {
+            try await batch.commit()
+            Auth.auth().currentUser?.delete { error in
+                if let error = error {
+                    // 계정 삭제 중 오류가 발생한 경우 처리
+                    Log("Error deleting account: \(error.localizedDescription)")
+                } else {
+                    // 계정이 성공적으로 삭제된 경우
+                    Log("Account deleted successfully.")
+                }
             }
+        } catch {
+            Log(error)
         }
     }
     

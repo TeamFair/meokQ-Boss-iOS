@@ -103,24 +103,25 @@ struct SignoutView: View {
                     message: Text("회원탈퇴를 하게 된다면 모든 데이터는 복구가 불가능합니다."),
                     primaryButton: .destructive(Text("확인"),action: {
                         print("유저 정보 \(uid),\(userName),\(isLogin)")
-                        UserStore().deleteDataFromFirestore(uid: uid) {
-                            print("del")
-                            uid = ""
-                            userName = ""
-                            isLogin = false
-                            
-                            Log("Google googleLogin()")
-                            // rootViewController
-                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
-                            // 로그인 진행
-                            guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-                            // Create Google Sign In configuration object.
-                            let config = GIDConfiguration(clientID: clientID)
-                            GIDSignIn.sharedInstance.configuration = config
-                            
-                            GIDSignIn.sharedInstance.signOut()
-                            GIDSignIn.sharedInstance.disconnect()
-                            
+                        Task {
+                            await UserStore().deleteDataFromFirestore(uid: uid) {
+                                uid = ""
+                                userName = ""
+                                isLogin = false
+                                
+                                Log("Google googleLogin()")
+                                // rootViewController
+                                guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+                                // 로그인 진행
+                                guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+                                // Create Google Sign In configuration object.
+                                let config = GIDConfiguration(clientID: clientID)
+                                GIDSignIn.sharedInstance.configuration = config
+                                
+                                GIDSignIn.sharedInstance.signOut()
+                                GIDSignIn.sharedInstance.disconnect()
+                                
+                            }
                         }
                         
                         print("유저 정보 \(uid),\(userName),\(isLogin)")
