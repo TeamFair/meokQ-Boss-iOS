@@ -22,6 +22,10 @@ class MarketStore: FirestoreManager {
 extension MarketStore {
     @MainActor
     func fetchMarket(marketId: String) async {
+        if marketId == "" {
+            return
+        }
+        
         do {
             guard let documentData = try await db.collection("markets").document(marketId).getDocument().data() else {
                 Log("guard else")
@@ -37,6 +41,10 @@ extension MarketStore {
     
     @MainActor
     func addMission(marketId: String, missionDescription: String, reward: String, missionCount: Int) async {
+        if marketId == "" {
+            return
+        }
+        
         let missionId = UUID().uuidString
 
         let missionData: [String: Any] = [
@@ -75,6 +83,10 @@ extension MarketStore {
     
     @MainActor
     func addCoupon(marketId: String, userId: String, reward: String, missionId: String, requestId: String) async {
+        if marketId == "" {
+            return
+        }
+        
         let couponId = UUID().uuidString
 
         let couponData: [String: Any] = [
@@ -118,6 +130,10 @@ extension MarketStore {
     
     @MainActor
     func fetchAllMarketMissions(marketId: String) async {
+        if marketId == "" {
+            return
+        }
+        
         do {
             var newMissions: [Mission] = []
             let querySnapshot = try await db.collection("markets")
@@ -142,6 +158,10 @@ extension MarketStore {
     
     @MainActor
     func fetchAllMarketCompletionMissions(marketId: String) async {
+        if marketId == "" {
+            return
+        }
+        
         do {
             self.requests = []
             let querySnapshot = try await db.collection("markets")
@@ -171,6 +191,10 @@ extension MarketStore {
     
     @MainActor
     func rejectRequest(marketId: String, missionId: String, requestId: String, message: String) async {
+        if marketId == "" {
+            return
+        }
+        
         let requestStatus: [String: Any] = [
             "status": "rejected",
             "message": message,
@@ -196,6 +220,9 @@ extension MarketStore {
     
     @MainActor
     func fetchCouponStatistics(marketId: String) async {
+        if marketId == "" {
+            return
+        }
         self.coupons = []
         do {
             for user in users {
