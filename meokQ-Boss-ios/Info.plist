@@ -7,9 +7,21 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Google Signin URL</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.140008629638-3to4jufc4oav4e0g6i15kibjqn0p3dnm</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Kakao Signin URL</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao10ccd548154f1ce9af4bbf4031aced51</string>
 			</array>
 		</dict>
 	</array>
