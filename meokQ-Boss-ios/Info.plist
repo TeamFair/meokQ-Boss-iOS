@@ -8,7 +8,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>Google Signin URL</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.140008629638-3to4jufc4oav4e0g6i15kibjqn0p3dnm</string>
@@ -18,14 +18,19 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>Kakao Signin URL</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao10ccd548154f1ce9af4bbf4031aced51</string>
+				<string>kakaoe7cd0441adfa8f5e9b8b4c3570358c36</string>
 			</array>
 		</dict>
 	</array>
 	<key>KakaoNativeAppKey</key>
 	<string>10ccd548154f1ce9af4bbf4031aced51</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
+	</array>
 </dict>
 </plist>
