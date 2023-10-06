@@ -112,7 +112,6 @@
 		FF1873FC2A8D031D00F60E81 /* AppleSDGothicNeoR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.otf; sourceTree = "<group>"; };
 		FF1873FD2A8D031D00F60E81 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		FF23BC272AB14EB700434A6A /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
-		FF23BC2A2AB1505F00434A6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../Downloads/Info.plist; sourceTree = "<group>"; };
 		FF23BC2D2AB1514A00434A6A /* meokQ-Boss-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "meokQ-Boss-ios.entitlements"; sourceTree = "<group>"; };
 		FF23BC2E2AB1520500434A6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF23BC302AB1613100434A6A /* AppleLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +128,7 @@
 		FF3D3E9D2A9EC17D0041B64A /* Coupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
 		FF4E7DBB2AB0125C0052A19A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FF4E7DBD2AB05B130052A19A /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		FF90E38F2ACC421E0063EE88 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFFC6FC72A9083E6007C57AC /* MarketStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketStore.swift; sourceTree = "<group>"; };
 		FFFC6FC92A908472007C57AC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		FFFC6FCD2A90998A007C57AC /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 				FF1873CB2A8CFCE300F60E81 /* meokQ_Boss_iosApp.swift */,
 				FF23BC2D2AB1514A00434A6A /* meokQ-Boss-ios.entitlements */,
 				FF23BC2E2AB1520500434A6A /* GoogleService-Info.plist */,
-				FF23BC2A2AB1505F00434A6A /* Info.plist */,
+				FF90E38F2ACC421E0063EE88 /* Info.plist */,
 				FF1873DC2A8CFD3700F60E81 /* View */,
 				FF1873DB2A8CFD3100F60E81 /* Share */,
 				FF1873DA2A8CFD2F00F60E81 /* Sources */,
@@ -667,7 +667,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Teamfair.meokQ-Boss-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Teamfair.MatQBoss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -702,7 +702,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Teamfair.meokQ-Boss-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Teamfair.MatQBoss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
