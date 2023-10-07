@@ -1,7 +1,7 @@
 # meokQ-Boss-ios
 
 # 연락처
-이메일: tfairbusiness@gmail.com \n
+이메일: tfairbusiness@gmail.com /n
 웹사이트: https://tfairbusiness.wixsite.com/findtastyquest
 
 # 개인정보이용약관
