@@ -236,6 +236,20 @@ extension LoginView {
                 
                 self.loadingInfoDidKakaoAuth() // 사용자 정보 불러와서 Firebase Auth 로그인하기
             }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { oauthToken, error in // 카카오톡 앱으로 로그인
+                if let error = error { // 로그인 실패 -> 종료
+                    Log("Kakao Sign In Error: \(error.localizedDescription)")
+                    return
+                }
+                
+                _ = oauthToken // 로그인 성공
+                Log("accessToken : \(oauthToken?.accessToken ?? "")")
+                Log("refreshToken : \(oauthToken?.refreshToken ?? "")")
+                Log("idToken : \(oauthToken?.idToken ?? "")")
+                
+                self.loadingInfoDidKakaoAuth() // 사용자 정보 불러와서 Firebase Auth 로그인하기
+            }
         }
     }
     

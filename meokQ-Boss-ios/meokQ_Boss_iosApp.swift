@@ -25,7 +25,7 @@ struct meokQ_Boss_iosApp: App {
     @StateObject var userStore = UserStore()
     
     init() {
-        KakaoSDK.initSDK(appKey: "\(AppKeys.KakaoNativeAppKey)")
+        KakaoSDK.initSDK(appKey: "\(AppKeys.KakaoNativeAppkey)")
         Font.registerFonts(fontName: "Pretendard-Bold")
         Font.registerFonts(fontName: "Pretendard-Light")
         Font.registerFonts(fontName: "Pretendard-Regular")
@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure() // 여기 추가
-        KakaoSDK.initSDK(appKey: "\(AppKeys.KakaoNativeAppKey)")
+        KakaoSDK.initSDK(appKey: "\(AppKeys.KakaoNativeAppkey)")
         return true
     }
     
@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 struct AppKeys {
-    static let KakaoNativeAppKey = Bundle.main.object(forInfoDictionaryKey: "KakaoNativeAppkey")
+    static let KakaoNativeAppkey = Bundle.main.object(forInfoDictionaryKey: "KakaoNativeAppkey")
 }
 
 public func Log<T>(_ object: T?, filename: String = #file, line: Int = #line, funcName: String = #function) {
