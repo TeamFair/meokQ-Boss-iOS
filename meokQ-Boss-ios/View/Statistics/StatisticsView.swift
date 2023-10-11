@@ -25,46 +25,46 @@ struct StatisticsView: View {
     let sectionList: [StatisticsTitleSection] = [.published, .used]
 
     var body: some View {
-            ZStack{
-                VStack(spacing: 0){
-                    ScrollView{
-                        VStack(spacing: 0){
-                            HStack(spacing: 30) {
-                                ForEach(sectionList, id: \.self) { section in
-                                    StatisticsTitleTextView(section: section, namespace: namespace, selectedSection: $selectedSection)
-                                        .onTapGesture {
-                                            withAnimation(.easeOut) {
-                                                selectedSection = section
-                                            }
+        ZStack{
+            VStack(spacing: 0){
+                ScrollView{
+                    VStack(spacing: 0){
+                        HStack(spacing: 30) {
+                            ForEach(sectionList, id: \.self) { section in
+                                StatisticsTitleTextView(section: section, namespace: namespace, selectedSection: $selectedSection)
+                                    .onTapGesture {
+                                        withAnimation(.easeOut) {
+                                            selectedSection = section
                                         }
-                                }
+                                    }
                             }
-                            .frame(maxWidth: .infinity)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(height: 1)
-                                    .foregroundColor(.gray)
-                                    .offset(y: 18)
-                            }
-                            if selectedSection == .published {
-                                StatisticsSubmitFinishedTabView(couponList: marketStore.coupons.filter{$0.status == "issued"})
-                            } else {
-                                StatisticsUsedFinishedTabView(couponList: marketStore.coupons.filter{$0.status == "redeemed"})
-                            }
-                            
-                            Spacer()
                         }
+                        .frame(maxWidth: .infinity)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(height: 1)
+                                .foregroundColor(.gray)
+                                .offset(y: 18)
+                        }
+                        if selectedSection == .published {
+                            StatisticsSubmitFinishedTabView(couponList: marketStore.coupons.filter{$0.status == "issued"})
+                        } else {
+                            StatisticsUsedFinishedTabView(couponList: marketStore.coupons.filter{$0.status == "redeemed"})
+                        }
+                        
+                        Spacer()
                     }
-                    .padding(.top, 10)
-                    Spacer()
                 }
+                .padding(.top, 10)
+                Spacer()
             }
-            .background(Color.LightYellow)
-            .task {
-                viewTitle = "고객 통계"
-                await marketStore.fetchUser()
-                await marketStore.fetchCouponStatistics(marketId: uid)
-            }
+        }
+        .background(Color.LightYellow)
+        .task {
+            viewTitle = "고객 통계"
+            await marketStore.fetchUser()
+            await marketStore.fetchCouponStatistics(marketId: uid)
+        }
     }
 }
 
