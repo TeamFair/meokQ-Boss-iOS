@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>140008629638-3to4jufc4oav4e0g6i15kibjqn0p3dnm.apps.googleusercontent.com</string>
+	<string>140008629638-9jkp9t5vck7isoqi63fj90q4lq477mm0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.140008629638-3to4jufc4oav4e0g6i15kibjqn0p3dnm</string>
+	<string>com.googleusercontent.apps.140008629638-9jkp9t5vck7isoqi63fj90q4lq477mm0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>140008629638-c3jjvn8u51taiut58rtitsmtqcelr7om.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDIKTqIGfIGQi4EgpiWv94QGH08PXgRdkg</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.Teamfair.meokQ-Boss-ios</string>
+	<string>com.Teamfair.MatQBoss</string>
 	<key>PROJECT_ID</key>
 	<string>teamfair-7fb46</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:140008629638:ios:1ba10a8c6162fca7b7b807</string>
+	<string>1:140008629638:ios:b5a7f341e8ee6e0bb7b807</string>
 	<key>DATABASE_URL</key>
 	<string>https://teamfair-7fb46-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>
