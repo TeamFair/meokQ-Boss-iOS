@@ -15,6 +15,7 @@ import _AuthenticationServices_SwiftUI
 
 struct LoginView: View {
     
+    @Binding var selectedTab: Int
     @EnvironmentObject var appState: AppState
     @AppStorage("uid") var uid: String = ""
     @AppStorage("userName") var userName: String = ""
@@ -37,12 +38,14 @@ struct LoginView: View {
     var kakaoButtonAction: () -> Void {
         {
             kakaoAuthSignIn()
+            selectedTab = 3
         }
     }
     
     var googleButtonAction: () -> Void {
         {
             googleSigninButtonAction()
+            selectedTab = 3
         }
     }
     
@@ -64,12 +67,13 @@ struct LoginView: View {
                 VStack(spacing: 27) {
                     KakaoLoginButtonView(buttonAction: kakaoButtonAction)
                     GoogleLoginButtonView(buttonAction: googleButtonAction)
-                    AppleLoginButtonView()
+                    AppleLoginButtonView(selectedTab: $selectedTab)
                         .environmentObject(userViewModel)
                 }
                 .padding(.bottom, 100)
+                
                 NavigationLink(
-                    destination: TabbarView()
+                    destination: TabbarView(selectedTab: 0)
                         .environmentObject(appState)
                         .environmentObject(marketViewModel)
                         .environmentObject(userViewModel)
@@ -79,10 +83,6 @@ struct LoginView: View {
                         .foregroundColor(.gray)
                         .underline()
                 }
-                NavigationLink(destination: TabbarView()
-                    .environmentObject(appState), isActive: $isLogin) {
-                        EmptyView()
-                    }
             }
         }
         .onAppear{
@@ -96,7 +96,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(selectedTab: .constant(3))
     }
 }
 

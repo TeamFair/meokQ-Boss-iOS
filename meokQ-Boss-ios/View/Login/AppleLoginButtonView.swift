@@ -9,6 +9,7 @@ import SwiftUI
 import _AuthenticationServices_SwiftUI
 
 struct AppleLoginButtonView: View {
+    @Binding var selectedTab: Int
     
     @EnvironmentObject var userViewModel: UserStore
     @StateObject var appleLoginViewModel = AppleLoginViewModel()
@@ -64,6 +65,7 @@ struct AppleLoginButtonView: View {
                         self.uid = appleLoginViewModel.firebaseuid
                         await userViewModel.addNewUser(uid: self.uid, displayName: self.fullName)
                         isLogin = true
+                        selectedTab = 3
                     }
                 case .failure(let error):
                     Log(error.localizedDescription)

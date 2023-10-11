@@ -12,23 +12,27 @@ struct TabbarView: View {
     @AppStorage("userName") var userName: String = ""
     @AppStorage("isLogin") var isLogin: Bool = false
     
+    @State var selectedTab: Int
     @State var viewTitle = ""
-    @StateObject var marketStore = MarketStore()
+    @State var mode: EditedMode = .view
+    @EnvironmentObject var marketStore: MarketStore
     @EnvironmentObject var appState: AppState
     
-    init() {
+    init(selectedTab: Int) {
         UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().barTintColor = UIColor(named: "Tabbar")
+        self.selectedTab = selectedTab
     }
     
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             QuestView(viewTitle: $viewTitle, marketStore: marketStore)
                 .tabItem {
                     Image(systemName: "star.fill")
                     Text("퀘스트")
                 }
                 .navigationBarBackButtonHidden()
+                .tag(0)
             
             ReceiptView(viewTitle: $viewTitle, marketStore: marketStore)
                 .tabItem{
@@ -36,6 +40,7 @@ struct TabbarView: View {
                     Text("영수증")
                 }
                 .navigationBarBackButtonHidden()
+                .tag(1)
             
             StatisticsView(viewTitle: $viewTitle, marketStore: marketStore)
                 .tabItem {
@@ -43,6 +48,15 @@ struct TabbarView: View {
                     Text("통계")
                 }
                 .navigationBarBackButtonHidden()
+                .tag(2)
+            
+            ProfileView(viewTitle: $viewTitle, mode: $mode, marketStore: marketStore)
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("내 정보")
+                }
+                .navigationBarBackButtonHidden()
+                .tag(3)
         }
         .navigationTitle(viewTitle)
         .navigationBarTitleDisplayMode(.inline)
@@ -53,12 +67,12 @@ struct TabbarView: View {
         }
         .navigationBarBackButtonHidden(isLogin)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .topBarTrailing) {
                 NavigationLink(destination: SettingView().environmentObject(appState)) {
                     Image(systemName: "gearshape")
-                        .foregroundColor(.black)
                         .opacity(isLogin ? 1 : 0)
                 }
+                .tint(.black)
             }
         }
     }
@@ -67,7 +81,7 @@ struct TabbarView: View {
 struct Tabview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            TabbarView()
+            TabbarView(selectedTab: 3)
                 .environmentObject(AppState(uid: "marketIdSample2"))
         }
     }
