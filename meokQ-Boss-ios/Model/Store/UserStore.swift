@@ -29,18 +29,25 @@ extension UserStore {
             "withdrawalTimestamp": Timestamp.init(date: Date.now)
         ]
         
-        let marketRef = db
-            .collection("markets").document(uid)
+        let marketRef = db.collection("markets").document(uid)
         let userRef = db.collection("users").document(uid)
         
         
         let batch = db.batch()
         
-        batch.updateData(deleteMarket, forDocument: marketRef)
+        do {
+            if try await marketRef.getDocument().exists {
+                batch.updateData(deleteMarket, forDocument: marketRef)
+            }
+        } catch {
+            Log(error)
+        }
+
         batch.deleteDocument(userRef)
         
         do {
             try await batch.commit()
+            completion()
             Auth.auth().currentUser?.delete { error in
                 if let error = error {
                     // 계정 삭제 중 오류가 발생한 경우 처리
