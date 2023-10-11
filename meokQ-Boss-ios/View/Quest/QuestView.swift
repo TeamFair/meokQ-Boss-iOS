@@ -51,8 +51,6 @@ struct QuestView: View {
                         } else {
                             QuestCheckTabView(missionList: marketStore.missions.values.filter { $0.status == "pending" })
                         }
-                        
-                        Spacer()
                     }
                 }
                 .padding(.top, 10)

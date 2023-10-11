@@ -13,13 +13,17 @@ import SwiftUI
 struct StatisticsSubmitFinishedTabView: View {
     let couponList: [Coupon]
     var body: some View {
-        LazyVGrid(columns: [GridItem(.flexible())], spacing: 20) {
-            ForEach(couponList, id:\.couponId) { coupon in
-                StatisticsComponent(time: dateToString(date: coupon.issuedTimestamp), userName: coupon.userDisplayName, couponName: coupon.reward, questName: coupon.missionDescription)
-                    .padding(.horizontal, 16)
+        if couponList.isEmpty {
+            Text("발급된 쿠폰이 없습니다")
+                .padding(.top, 200)
+        } else {
+            LazyVGrid(columns: [GridItem(.flexible())], spacing: 20) {
+                ForEach(couponList, id:\.couponId) { coupon in
+                    StatisticsComponent(time: dateToString(date: coupon.issuedTimestamp), userName: coupon.userDisplayName, couponName: coupon.reward, questName: coupon.missionDescription)
+                        .padding(.horizontal, 16)
+                }
             }
         }
-        .navigationBarTitle("고객 통계", displayMode: .large)
     }
     
     func dateToString(date: Date) -> String {

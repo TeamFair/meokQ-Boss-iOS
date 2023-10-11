@@ -19,26 +19,33 @@ struct ReceiptView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
+        ZStack {
+            Color.LightYellow
+                .ignoresSafeArea()
             VStack (spacing:0){
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.flexible())],spacing: 16) {
-                        ForEach(marketStore.requests, id: \.self) { request in
-                            NavigationLink(destination: ReceiptCheckView(request: request, marketStore: marketStore)) {
-                                ReceiptComponent(request: request)
+                if marketStore.requests.isEmpty {
+                    Text("승인할 영수증이 없습니다")
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.flexible())],spacing: 16) {
+                            ForEach(marketStore.requests, id: \.self) { request in
+                                NavigationLink(destination: ReceiptCheckView(request: request, marketStore: marketStore)) {
+                                    ReceiptComponent(request: request)
+                                }
                             }
-                        }
-                        .tint(.black)
-                    }.shadow(color: .black.opacity(0.16), radius: 10, x: 0, y: 0)
-                        .padding(.horizontal, 20)
-                        .padding(.top, 30)
+                            .tint(.black)
+                        }.shadow(color: .black.opacity(0.16), radius: 10, x: 0, y: 0)
+                            .padding(.horizontal, 20)
+                            .padding(.top, 30)
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
-            .background(Color.LightYellow)
-            .task {
-                viewTitle = "영수증"
-                await marketStore.fetchAllMarketCompletionMissions(marketId: uid)
-            }
+        }
+        .task {
+            viewTitle = "영수증"
+            await marketStore.fetchAllMarketCompletionMissions(marketId: uid)
+        }
     }
 }
 
