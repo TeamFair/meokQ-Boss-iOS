@@ -15,7 +15,7 @@ let navBarAppearence = UINavigationBarAppearance()
 
 @main
 struct meokQ_Boss_iosApp: App {
-    
+    @State var selectedTab: Int = 0
     @StateObject var appState: AppState = AppState()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage("isLogin") var isLogin: Bool = false
@@ -41,12 +41,12 @@ struct meokQ_Boss_iosApp: App {
         WindowGroup {
             NavigationView {
                 if isLogin {
-                    TabbarView()
+                    TabbarView(selectedTab: selectedTab)
                         .environmentObject(appState)
                         .environmentObject(marketStore)
                         .environmentObject(userStore)
                 } else {
-                    LoginView()
+                    LoginView(selectedTab: $selectedTab)
                         .environmentObject(appState)
                         .environmentObject(marketStore)
                         .environmentObject(userStore)
@@ -101,7 +101,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return false
     }
-    
 }
 
 
