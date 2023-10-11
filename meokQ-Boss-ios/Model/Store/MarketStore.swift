@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
 
 class MarketStore: FirestoreManager {
     @Published var market: Market = Market()
@@ -38,6 +38,55 @@ extension MarketStore {
         }
     }
   
+    @MainActor
+    func updateMarket(marketId: String) async {
+        if marketId == "" {
+            Log("No marketId")
+        }
+        
+        for district in District.allCases {
+            if market.address.contains(district.rawValue) {
+                market.district = district.districtCode
+            }
+        }
+        
+        let marketData: [String: Any] = [
+            "marketId": market.marketId,
+            "businessOwnerId": market.marketId,
+            "district": market.district,
+            "logoImage": market.marketImages,
+            "address": market.address,
+            "missionCount": market.missionCount,
+            "name": market.name,
+            "openingTime": market.openingTime,
+            "closingTime": market.closingTime,
+            "phoneNumber" : market.phoneNumber,
+            "createdTimestamp": market.createdTimestamp,
+            "modifiedTimestamp": Timestamp.init(date: Date.now),
+            "withdrawalTimestamp": "",
+            "isWithdrawal": false
+        ]
+        
+        let MarketRef = db.collection("markets").document(marketId)
+        let batch = db.batch()
+        
+        do {
+            if try await MarketRef.getDocument().exists {
+                batch.updateData(marketData, forDocument: MarketRef)
+            } else {
+                batch.setData(marketData, forDocument: MarketRef)
+            }
+        } catch {
+            Log(error)
+        }
+        
+        do {
+            try await batch.commit()
+            Log("Batch write succeeded")
+        } catch {
+            Log(error)
+        }
+    }
     
     @MainActor
     func addMission(marketId: String, missionDescription: String, reward: String, missionCount: Int) async {

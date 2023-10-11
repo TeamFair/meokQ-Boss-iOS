@@ -8,18 +8,18 @@
 import Foundation
 
 
-class Market: DocumentTimestamp {
+class Market: DocumentTimestamp, ObservableObject {
     let uuid = UUID()
-    var address = ""
-    var businessOwnerId = ""
-    var closingTime = ""
-    var district = ""
-    var marketId = ""
-    var marketImages = ""
-    var missionCount = 0
-    var name = ""
-    var openingTime = ""
-    var phoneNumber = ""
+    @Published var address = ""
+    @Published var businessOwnerId = ""
+    @Published var closingTime = ""
+    @Published var district = ""
+    @Published var marketId = ""
+    @Published var marketImages = ""
+    @Published var missionCount = 0
+    @Published var name = ""
+    @Published var openingTime = ""
+    @Published var phoneNumber = ""
 }
 
 extension Market: Hashable {
