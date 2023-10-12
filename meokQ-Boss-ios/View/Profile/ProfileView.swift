@@ -119,7 +119,7 @@ struct ProfileView: View {
                 isFocused = false
                 switch mode {
                 case .edit:
-                    FirebaseStorageManager.uploadImage(image: selectedImage, pathRoot: uid) { url in
+                    FirebaseStorageManager.uploadLogoImage(image: selectedImage, pathRoot: uid) { url in
                         guard let url = url?.absoluteString else {
                             Log("Image upload error")
                             return
