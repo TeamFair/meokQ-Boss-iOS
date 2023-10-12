@@ -30,7 +30,7 @@ extension FirestoreManager {
         }
         data.district = documentData["district"] as? String ?? ""
         data.marketId = documentData["marketId"] as? String ?? ""
-        data.marketImages = documentData["marketImages"] as? String ?? ""
+        data.marketImages = documentData["logoImage"] as? String ?? ""
         data.missionCount = documentData["missionCount"] as? Int ?? 0
         if let timestamp = documentData["modifiedTimestamp"] as? Timestamp {
             data.createdTimestamp = timestamp.dateValue().addingTimeInterval(3600 * 9)
