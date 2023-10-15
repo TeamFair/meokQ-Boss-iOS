@@ -98,7 +98,7 @@ extension MarketStore {
 
         let missionData: [String: Any] = [
             "createdTimestamp" : Timestamp.init(date: Date.now),
-            "missionId": marketId,
+            "missionId": missionId,
             "missionDescription": missionDescription,
             "modifiedTimestamp": Timestamp.init(date: Date.now),
             "paidStatus": true,
