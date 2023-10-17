@@ -14,7 +14,7 @@ import UIKit
 class FirebaseStorageManager {
     static func uploadLogoImage(image: UIImage, pathRoot: String, completion: @escaping (URL?) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.4) else {
-            completion(URL(string: "https://firebasestorage.googleapis.com/v0/b/teamfair-7fb46.appspot.com/o/defaultImage%2FLogo.png?alt=media&token=3ff92859-7919-49e6-a4ca-173f1635df91&_gl=1*1hlfeu3*_ga*NTc3MzYwNTE5LjE2ODMwOTkyMTg.*_ga_CW55HF8NVT*MTY5NzA3NzUyNi4xNTkuMS4xNjk3MDc3NTI4LjU4LjAuMA.."))
+            completion(nil)
             return
         }
         

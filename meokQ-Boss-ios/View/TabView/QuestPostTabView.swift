@@ -17,7 +17,7 @@ struct QuestPostTabView: View {
                 .padding(.top, 200)
         } else {
             LazyVGrid(columns: [GridItem(.flexible())], spacing: 20) {
-                ForEach(missionList, id: \.self) { mission in
+                ForEach(missionList.sorted(by: {$0.createdTimestamp > $1.createdTimestamp}), id: \.self) { mission in
                     QuestComponent(couponName: mission.reward, questName: mission.missionDescription)
                         .padding(.horizontal, 16)
                 }

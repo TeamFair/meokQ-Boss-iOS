@@ -23,6 +23,7 @@ extension MarketStore {
     @MainActor
     func fetchMarket(marketId: String) async {
         if marketId == "" {
+            Log("not marketId")
             return
         }
         
@@ -33,6 +34,7 @@ extension MarketStore {
             }
             let data = encodeDataToMarket(documentData: documentData)
             self.market = data
+            Log(self.market)
         } catch {
             Log("\(error)")
         }

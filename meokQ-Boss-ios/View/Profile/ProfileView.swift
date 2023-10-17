@@ -121,6 +121,10 @@ struct ProfileView: View {
                 case .edit:
                     FirebaseStorageManager.uploadLogoImage(image: selectedImage, pathRoot: uid) { url in
                         guard let url = url?.absoluteString else {
+                            Task {
+                                marketStore.market.marketId = uid
+                                await marketStore.updateMarket(marketId: uid)
+                            }
                             Log("Image upload error")
                             return
                         }
