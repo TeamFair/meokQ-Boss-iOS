@@ -250,9 +250,18 @@ extension MarketStore {
             "modifiedTimestamp": Timestamp.init(date: Date.now)
         ]
         
+//        createdTimestamp
+//        marketId
+//        message
+//        missionId
+//        missionVerificationRequestImage
+//        modifiedTimestamp
+//        requestId
+//        status
+//        userId
+        
         let MissionRequestRef = db
             .collection("markets").document(marketId)
-            .collection("missions_market").document(missionId)
             .collection("completion_requests_mission").document(requestId)
         
         let batch = db.batch()
